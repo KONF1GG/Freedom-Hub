@@ -13,6 +13,9 @@ RUN npm ci
 # Копируем исходный код
 COPY . .
 
+# Устанавливаем переменную окружения для сборки
+ENV VITE_TELEGRAM_BOT_USERNAME=NoteGrafana_bot
+
 # Собираем приложение
 RUN npm run build
 
