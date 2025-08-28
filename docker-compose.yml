@@ -23,6 +23,7 @@ services:
 
   nginx:
     image: nginx:alpine
+    user: root
     ports:
       - "80:80"
       - "443:443"
