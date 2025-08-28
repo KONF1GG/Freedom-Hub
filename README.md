@@ -89,10 +89,10 @@ docker-compose up --build -d
 Freedom-Hub/
 ├── docker-compose.yml      # Конфигурация Docker
 ├── Dockerfile.app          # Dockerfile для Node.js приложения
-├── Dockerfile.nginx        # Dockerfile для nginx
+├── Dockerfile.nginx        # Dockerfile для nginx (опционально)
 ├── nginx.conf              # Конфигурация nginx
 ├── deploy.sh               # Скрипт развертывания
-└── dev-dist/               # Собранные файлы
+└── dist/                   # Собранные файлы (создается при npm run build)
 ```
 
 ### Безопасность

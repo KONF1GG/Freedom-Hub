@@ -22,9 +22,7 @@ services:
       - app-network
 
   nginx:
-    build:
-      context: .
-      dockerfile: Dockerfile.nginx
+    image: nginx:alpine
     ports:
       - "80:80"
       - "443:443"
