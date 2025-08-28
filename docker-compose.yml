@@ -6,18 +6,19 @@ services:
       context: .
       dockerfile: Dockerfile.app
       args:
-        - NODE_ENV=${NODE_ENV:-production}
+        - NODE_ENV=development
     ports:
       - "80:3000"
       - "443:3000"
     environment:
-      - NODE_ENV=${NODE_ENV:-production}
-      - PORT=${PORT:-3000}
+      - NODE_ENV=development
+      - PORT=3000
+      - VITE_TELEGRAM_BOT_USERNAME=${VITE_TG_BOT_NAME:-NoteGrafana_bot}
     volumes:
       - ./src:/app/src
       - ./public:/app/public
     env_file:
-      - .env.${NODE_ENV:-production}
+      - .env.development
     restart: unless-stopped
     networks:
       - app-network
