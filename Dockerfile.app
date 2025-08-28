@@ -30,7 +30,6 @@ RUN npm ci
 
 # Копируем собранное приложение
 COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/dev-dist ./dev-dist
 
 # Создаем пользователя для безопасности
 RUN addgroup -g 1001 -S nodejs && \
