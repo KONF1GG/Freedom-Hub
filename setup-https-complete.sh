@@ -24,7 +24,7 @@ gather_system_info() {
     
     echo ""
     echo "🌐 Сетевая информация:"
-    echo "   Внешний IP: $(curl -s ifconfig.me 2>/dev/null || echo "Не удалось определить")"
+    echo "   Внешний IP: $(timeout 5 curl -s ifconfig.me 2>/dev/null || echo "Не удалось определить")"
     echo "   Локальный IP: $(hostname -I | awk '{print $1}' 2>/dev/null || echo "Неизвестно")"
     echo "   Имя хоста: $(hostname)"
     
@@ -87,8 +87,8 @@ gather_system_info() {
     
     echo ""
     echo "🔍 Проверка доступности извне:"
-    echo "   HTTP доступность: $(curl -s -o /dev/null -w "%{http_code}" "http://$domain" 2>/dev/null || echo "Ошибка")"
-    echo "   HTTPS доступность: $(curl -s -o /dev/null -w "%{http_code}" "https://$domain" 2>/dev/null || echo "Ошибка")"
+    echo "   HTTP доступность: $(timeout 10 curl -s -o /dev/null -w "%{http_code}" "http://$domain" 2>/dev/null || echo "Таймаут/Ошибка")"
+    echo "   HTTPS доступность: $(timeout 10 curl -s -o /dev/null -w "%{http_code}" "https://$domain" 2>/dev/null || echo "Таймаут/Ошибка")"
 }
 
 # Функция для проверки портов
