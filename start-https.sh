@@ -34,15 +34,15 @@ fi
 
 # Запускаем приложение
 echo "🐳 Запуск Docker контейнеров..."
-docker-compose -f docker-compose.https.yml up -d
+docker compose -f docker-compose.https.yml up -d
 
 echo ""
 echo "✅ Freedom Hub запущен!"
 echo ""
 echo "📋 Полезные команды:"
-echo "   Просмотр логов: docker-compose -f docker-compose.https.yml logs -f"
-echo "   Остановка: docker-compose -f docker-compose.https.yml down"
-echo "   Перезапуск: docker-compose -f docker-compose.https.yml restart"
+echo "   Просмотр логов: docker compose -f docker-compose.https.yml logs -f"
+echo "   Остановка: docker compose -f docker-compose.https.yml down"
+echo "   Перезапуск: docker compose -f docker-compose.https.yml restart"
 echo ""
 echo "🌐 Сайт доступен по адресу: http://localhost (будет перенаправлен на HTTPS)"
 echo ""

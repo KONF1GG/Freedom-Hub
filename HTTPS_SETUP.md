@@ -36,7 +36,7 @@
 
 3. **Запустите приложение**:
    ```bash
-   docker-compose -f docker-compose.https.yml up -d
+   docker compose -f docker-compose.https.yml up -d
    ```
 
 ### Шаг 3: Автоматическое обновление сертификатов
@@ -65,7 +65,7 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
 ### Запуск с самоподписанным сертификатом
 
 ```bash
-docker-compose -f docker-compose.https.yml up -d
+docker compose -f docker-compose.https.yml up -d
 ```
 
 **Внимание**: Браузеры будут показывать предупреждение о небезопасном соединении для самоподписанных сертификатов.
@@ -90,7 +90,7 @@ docker-compose -f docker-compose.https.yml up -d
 
 ### Ошибка "certbot: command not found"
 ```bash
-docker-compose -f docker-compose.https.yml run --rm certbot --help
+docker compose -f docker-compose.https.yml run --rm certbot --help
 ```
 
 ### Проблемы с правами доступа
@@ -102,13 +102,13 @@ sudo chown -R $USER:$USER nginx/
 ### Проверка логов
 ```bash
 # Логи nginx
-docker-compose -f docker-compose.https.yml logs nginx
+docker compose -f docker-compose.https.yml logs nginx
 
 # Логи приложения
-docker-compose -f docker-compose.https.yml logs app
+docker compose -f docker-compose.https.yml logs app
 
 # Логи certbot
-docker-compose -f docker-compose.https.yml logs certbot
+docker compose -f docker-compose.https.yml logs certbot
 ```
 
 ## Безопасность

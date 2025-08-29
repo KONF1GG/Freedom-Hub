@@ -9,8 +9,8 @@
     "preview": "vite preview --host",
     "postinstall": "echo postinstall",
     "start": "vite preview --host --port 3000",
-    "docker:dev": "docker-compose up --build",
-    "docker:prod": "NODE_ENV=production docker-compose up --build"
+    "docker:dev": "docker compose up --build",
+    "docker:prod": "NODE_ENV=production docker compose up --build"
   },
   "dependencies": {
     "@twa-dev/sdk": "^8.0.2",
