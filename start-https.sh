@@ -28,6 +28,8 @@ if grep -q "yourdomain.com" nginx/conf.d/default.conf; then
     echo "После настройки домена запустите:"
     echo "   ./init-letsencrypt.sh"
     echo ""
+else
+    echo "✅ Домен настроен: hub.freedom1.ru"
 fi
 
 # Запускаем приложение

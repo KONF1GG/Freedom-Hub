@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Конфигурация
-domains=(yourdomain.com www.yourdomain.com)
+domains=(hub.freedom1.ru www.hub.freedom1.ru)
 rsa_key_size=4096
 data_path="./certbot"
 email="your-email@example.com" # Добавьте ваш email

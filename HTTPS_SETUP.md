@@ -11,8 +11,8 @@
 ### Шаг 1: Настройка конфигурации
 
 1. **Отредактируйте файлы конфигурации**:
-   - В `nginx/conf.d/default.conf` замените `yourdomain.com` на ваш домен
-   - В `init-letsencrypt.sh` замените `yourdomain.com` и `your-email@example.com`
+   - В `nginx/conf.d/default.conf` замените `hub.freedom1.ru` на ваш домен (если нужно)
+   - В `init-letsencrypt.sh` замените `hub.freedom1.ru` и `your-email@example.com`
 
 2. **Создайте необходимые директории**:
    ```bash
@@ -82,7 +82,7 @@ docker-compose -f docker-compose.https.yml up -d
 
 После настройки проверьте:
 
-1. **HTTP → HTTPS редирект**: `http://yourdomain.com` должен перенаправлять на `https://yourdomain.com`
+1. **HTTP → HTTPS редирект**: `http://hub.freedom1.ru` должен перенаправлять на `https://hub.freedom1.ru`
 2. **SSL сертификат**: В браузере должен быть зеленый замок
 3. **Безопасность**: Проверьте на [SSL Labs](https://www.ssllabs.com/ssltest/)
 
