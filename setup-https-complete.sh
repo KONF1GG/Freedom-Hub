@@ -207,6 +207,40 @@ setup_docker() {
     mkdir -p certbot/conf
     mkdir -p certbot/www
     
+    # Создаем временную HTTP конфигурацию для получения сертификата
+    echo "📝 Создание временной HTTP конфигурации..."
+    cat > nginx/conf.d/default-temp.conf << 'EOF'
+# Временная HTTP конфигурация для получения SSL сертификата
+server {
+    listen 80;
+    server_name hub.freedom1.ru;
+    
+    # Let's Encrypt challenge
+    location /.well-known/acme-challenge/ {
+        root /var/www/certbot;
+        try_files $uri =404;
+    }
+    
+    # Proxy to React app
+    location / {
+        proxy_pass http://app:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+        proxy_read_timeout 86400;
+    }
+}
+EOF
+    
+    # Применяем временную конфигурацию
+    echo "📝 Применяем временную конфигурацию..."
+    cp nginx/conf.d/default-temp.conf nginx/conf.d/default.conf
+    
     # Запускаем nginx
     echo "🌐 Запуск Nginx..."
     docker compose -f docker-compose.https.yml up -d nginx
@@ -271,6 +305,10 @@ final_setup() {
     echo "🎯 Шаг 6: Финальная настройка"
     echo "-------------------------------"
     
+    # Восстанавливаем полную HTTPS конфигурацию
+    echo "📝 Восстанавливаем полную HTTPS конфигурацию..."
+    cp nginx/conf.d/default.conf nginx/conf.d/default-https.conf
+    
     # Перезапуск nginx для применения сертификата
     echo "🔄 Перезапуск Nginx с HTTPS..."
     docker compose -f docker-compose.https.yml exec nginx nginx -s reload
@@ -278,6 +316,10 @@ final_setup() {
     # Запуск приложения
     echo "🚀 Запуск приложения..."
     docker compose -f docker-compose.https.yml up -d
+    
+    # Удаляем временные файлы
+    echo "🧹 Очистка временных файлов..."
+    rm -f nginx/conf.d/default-temp.conf
     
     echo ""
     echo "🎉 Настройка завершена!"
