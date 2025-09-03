@@ -1,0 +1,113 @@
+/* Стили для фильтров задач */
+
+.task-filters {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+}
+
+.filters-summary {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+.filters-summary span:nth-child(2) {
+  color: var(--color-text-muted);
+}
+
+.filters-controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.search-field {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-base);
+  transition: border-color var(--transition-fast);
+}
+
+.search-field:focus {
+  outline: none;
+  border-color: var(--color-blue-500);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+.search-field::placeholder {
+  color: var(--color-text-muted);
+}
+
+.status-filter,
+.priority-filter {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  transition: border-color var(--transition-fast);
+}
+
+.status-filter:focus,
+.priority-filter:focus {
+  outline: none;
+  border-color: var(--color-blue-500);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+.status-filter option,
+.priority-filter option {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+}
+
+/* Адаптация для мобильных устройств */
+@media (min-width: 640px) {
+  .filters-controls {
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .search-field {
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  .status-filter,
+  .priority-filter {
+    width: auto;
+    min-width: 150px;
+  }
+}
+
+@media (min-width: 768px) {
+  .task-filters {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .filters-summary {
+    margin-bottom: 0;
+  }
+  
+  .filters-controls {
+    flex-direction: row;
+    gap: var(--spacing-md);
+  }
+}

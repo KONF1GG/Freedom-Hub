@@ -1,0 +1,98 @@
+/* Стили для поля копирования */
+
+.copy-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.copy-field-label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+.copy-field-container {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: stretch;
+}
+
+.copy-field-input {
+  flex: 1;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  font-family: monospace;
+  transition: border-color var(--transition-fast);
+}
+
+.copy-field-input:focus {
+  outline: none;
+  border-color: var(--color-blue-500);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+.copy-button {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  min-height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.copy-button.default {
+  background-color: var(--color-blue-600);
+  color: white;
+}
+
+.copy-button.default:hover:not(:disabled) {
+  background-color: var(--color-blue-700);
+}
+
+.copy-button.default:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-blue-500);
+}
+
+.copy-button.copied {
+  background-color: var(--color-green-600);
+  color: white;
+}
+
+.copy-button.copied:hover:not(:disabled) {
+  background-color: var(--color-green-700);
+}
+
+.copy-button.copied:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-green-500);
+}
+
+.copy-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 640px) {
+  .copy-field-container {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+  
+  .copy-button {
+    min-height: 44px;
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+}

@@ -20,41 +20,31 @@ export default function TaskDetails({ task }: TaskDetailsProps) {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="task-details">
       {/* Заголовок */}
-      <div className="bg-slate-800 border border-slate-700 rounded-xl p-6">
-        <div className="flex items-start justify-between mb-4">
-          <div>
-            <h2 className="text-xl font-semibold text-white mb-2">
-              {task.title || "Без названия"}
-            </h2>
+      <div className="task-header-card">
+        <div className="task-header-content">
+          <div className="task-title-section">
+            <h2 className="task-title">{task.title || "Без названия"}</h2>
             {task.description && (
-              <p className="text-slate-300">{task.description}</p>
+              <p className="task-description">{task.description}</p>
             )}
           </div>
-          <div className="flex gap-2">
+          <div className="task-status-indicators">
             <div
-              className={`px-3 py-1 rounded-full text-xs font-medium ${
-                task.status
-                  ? "bg-green-500/20 text-green-400 border border-green-500/30"
-                  : "bg-red-500/20 text-red-400 border border-red-500/30"
-              }`}
+              className={`task-status ${task.status ? "completed" : "pending"}`}
             >
               {task.status ? "Выполнена" : "Не выполнена"}
             </div>
             <div
-              className={`px-3 py-1 rounded-full text-xs font-medium ${
-                task.priority
-                  ? "bg-orange-500/20 text-orange-400 border border-orange-500/30"
-                  : "bg-slate-500/20 text-slate-400 border border-slate-500/30"
-              }`}
+              className={`task-priority ${task.priority ? "high" : "normal"}`}
             >
               {task.priority ? "Высокий" : "Обычный"}
             </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="task-info-grid">
           <CopyField
             label="Номер заявки"
             value={task.contract_number || task.id}
@@ -66,52 +56,46 @@ export default function TaskDetails({ task }: TaskDetailsProps) {
             <CopyField
               label="Адрес"
               value={task.address}
-              className="md:col-span-2"
+              className="task-address-field"
             />
           )}
         </div>
       </div>
 
       {/* Табы */}
-      <div className="bg-slate-800 border border-slate-700 rounded-xl">
-        <div className="border-b border-slate-700">
-          <nav className="flex space-x-8 px-6">
+      <div className="task-tabs">
+        <div className="task-tabs-header">
+          <nav className="task-tabs-navigation">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`py-4 px-1 border-b-2 font-medium text-sm transition-colors ${
-                  activeTab === tab.id
-                    ? "border-blue-500 text-blue-400"
-                    : "border-transparent text-slate-400 hover:text-slate-300 hover:border-slate-600"
+                className={`task-tab-button ${
+                  activeTab === tab.id ? "active" : ""
                 }`}
               >
-                <span className="mr-2">{tab.icon}</span>
+                <span className="task-tab-icon">{tab.icon}</span>
                 {tab.label}
               </button>
             ))}
           </nav>
         </div>
 
-        <div className="p-6">
+        <div className="task-tabs-content">
           {activeTab === "details" && (
-            <div className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-2">
-                    Дата начала
-                  </label>
-                  <div className="px-3 py-2 bg-slate-700 rounded-lg text-white">
+            <div className="task-details-content">
+              <div className="task-dates-grid">
+                <div className="task-date-field">
+                  <label className="task-date-label">Дата начала</label>
+                  <div className="task-date-value">
                     {task.begin_date
                       ? new Date(task.begin_date).toLocaleDateString("ru-RU")
                       : "-"}
                   </div>
                 </div>
-                <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-2">
-                    Дата окончания
-                  </label>
-                  <div className="px-3 py-2 bg-slate-700 rounded-lg text-white">
+                <div className="task-date-field">
+                  <label className="task-date-label">Дата окончания</label>
+                  <div className="task-date-value">
                     {task.due_date
                       ? new Date(task.due_date).toLocaleDateString("ru-RU")
                       : "-"}
@@ -132,7 +116,7 @@ export default function TaskDetails({ task }: TaskDetailsProps) {
           )}
 
           {activeTab === "comments" && (
-            <div className="text-center text-slate-400 py-8">
+            <div className="task-comments-placeholder">
               Функция комментариев в разработке
             </div>
           )}

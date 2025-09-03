@@ -14,12 +14,12 @@ export default function HomePage() {
   const { allRequests, filteredRequests } = useRequestsStore();
 
   return (
-    <div className="min-h-screen bg-slate-900">
+    <div className="app-layout">
       <Header />
-      <main className="container-responsive py-6">
-        <div className="space-y-6">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-            <h1 className="heading-responsive text-white">Запросы</h1>
+      <main className="main-content">
+        <div className="page-container">
+          <div className="page-header">
+            <h1>Заявки</h1>
             <TaskFilters
               filters={filters}
               onFiltersChange={setFilters}

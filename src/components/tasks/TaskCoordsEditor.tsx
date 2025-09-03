@@ -32,9 +32,7 @@ export default function TaskCoordsEditor({
     return (
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <label className="block text-sm font-medium text-slate-300">
-            Координаты
-          </label>
+          <label className="label">Координаты</label>
           <button
             onClick={() => setIsEditing(true)}
             className="text-sm text-blue-400 hover:text-blue-300"
@@ -42,13 +40,9 @@ export default function TaskCoordsEditor({
             Изменить
           </button>
         </div>
-        <div className="grid grid-cols-2 gap-2">
-          <div className="px-3 py-2 bg-slate-700 rounded-lg text-white text-sm">
-            Широта: {lat.toFixed(6)}
-          </div>
-          <div className="px-3 py-2 bg-slate-700 rounded-lg text-white text-sm">
-            Долгота: {lng.toFixed(6)}
-          </div>
+        <div className="coords-display">
+          <div className="coords-display-item">Широта: {lat.toFixed(6)}</div>
+          <div className="coords-display-item">Долгота: {lng.toFixed(6)}</div>
         </div>
       </div>
     );
@@ -56,17 +50,15 @@ export default function TaskCoordsEditor({
 
   return (
     <div className="space-y-3">
-      <label className="block text-sm font-medium text-slate-300">
-        Координаты
-      </label>
-      <div className="grid grid-cols-2 gap-2">
+      <label className="label">Координаты</label>
+      <div className="coords-field">
         <input
           type="number"
           step="any"
           value={lat}
           onChange={(e) => setLat(parseFloat(e.target.value) || 0)}
           placeholder="Широта"
-          className="px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="input"
         />
         <input
           type="number"
@@ -74,20 +66,14 @@ export default function TaskCoordsEditor({
           value={lng}
           onChange={(e) => setLng(parseFloat(e.target.value) || 0)}
           placeholder="Долгота"
-          className="px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="input"
         />
       </div>
       <div className="flex gap-2">
-        <button
-          onClick={handleSave}
-          className="px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm transition-colors"
-        >
+        <button onClick={handleSave} className="btn btn-sm btn-primary">
           Сохранить
         </button>
-        <button
-          onClick={handleCancel}
-          className="px-3 py-2 bg-slate-600 hover:bg-slate-700 text-white rounded-lg text-sm transition-colors"
-        >
+        <button onClick={handleCancel} className="btn-cancel">
           Отмена
         </button>
       </div>

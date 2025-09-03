@@ -47,9 +47,9 @@ export default function RequireStandalone({ children }: PropsWithChildren) {
   const isAndroidDevice = isAndroid();
 
   return (
-    <div className="min-h-screen grid place-items-center p-6 bg-slate-900">
-      <div className="max-w-md w-full bg-slate-800 border border-slate-700 rounded-xl p-6 text-center space-y-4">
-        <div className="w-16 h-16 mx-auto bg-blue-600 rounded-full flex items-center justify-center">
+    <div className="pwa-modal">
+      <div className="pwa-modal-content">
+        <div className="pwa-modal-icon">
           <svg
             className="w-8 h-8 text-white"
             fill="none"
@@ -65,17 +65,15 @@ export default function RequireStandalone({ children }: PropsWithChildren) {
           </svg>
         </div>
 
-        <h2 className="text-xl font-semibold text-white">
-          Установите приложение
-        </h2>
+        <h2 className="pwa-modal-title">Установите приложение</h2>
 
-        <p className="text-sm text-slate-300">
+        <p className="pwa-modal-description">
           Для доступа к приложению установите его на устройство
         </p>
 
-        <div className="flex justify-center gap-3">
+        <div className="pwa-modal-actions">
           <button
-            className="rounded-lg bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 transition-colors"
+            className="btn btn-md btn-primary"
             onClick={async () => {
               if (deferredPrompt?.prompt) {
                 deferredPrompt.prompt();
@@ -99,12 +97,12 @@ export default function RequireStandalone({ children }: PropsWithChildren) {
         </p>
 
         {showHelp && (
-          <div className="mt-4 p-3 bg-slate-700 rounded-lg">
-            <p className="text-xs text-slate-300 mb-2">
+          <div className="pwa-modal-instructions">
+            <p className="pwa-modal-instructions-title">
               <strong>Инструкция по установке:</strong>
             </p>
             {isIosDevice ? (
-              <p className="text-xs text-slate-300">
+              <p className="pwa-modal-instructions-text">
                 1. Откройте Safari
                 <br />
                 2. Нажмите кнопку "Поделиться" (квадрат со стрелкой)
@@ -112,7 +110,7 @@ export default function RequireStandalone({ children }: PropsWithChildren) {
                 3. Выберите "На экран «Домой»"
               </p>
             ) : isAndroidDevice ? (
-              <p className="text-xs text-slate-300">
+              <p className="pwa-modal-instructions-text">
                 1. Откройте меню браузера (три точки)
                 <br />
                 2. Выберите "Установить приложение"
@@ -120,7 +118,7 @@ export default function RequireStandalone({ children }: PropsWithChildren) {
                 3. Подтвердите установку
               </p>
             ) : (
-              <p className="text-xs text-slate-300">
+              <p className="pwa-modal-instructions-text">
                 Откройте меню браузера и выберите "Установить приложение"
               </p>
             )}

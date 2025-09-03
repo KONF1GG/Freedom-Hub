@@ -30,13 +30,13 @@ export default function TaskPhotos({ photos, onPhotoUpload }: TaskPhotosProps) {
       <div className="flex items-center justify-between">
         <h3 className="text-lg font-medium text-white">Фотографии</h3>
         {onPhotoUpload && (
-          <label className="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors">
+          <label className="btn-upload">
             {isUploading ? "Загрузка..." : "Добавить фото"}
             <input
               type="file"
               accept="image/*"
               onChange={handleFileUpload}
-              className="hidden"
+              className="input-hidden"
               disabled={isUploading}
             />
           </label>
@@ -50,16 +50,16 @@ export default function TaskPhotos({ photos, onPhotoUpload }: TaskPhotosProps) {
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {photos.map((photo, index) => (
-            <div key={index} className="relative group">
+            <div key={index} className="card-photo group">
               <img
                 src={photo.url}
                 alt={photo.description || `Фото ${index + 1}`}
                 className="w-full h-32 object-cover rounded-lg border border-slate-600"
               />
-              <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-200 rounded-lg flex items-center justify-center">
-                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-white text-center">
-                  <p className="text-sm font-medium">{photo.description}</p>
-                  <p className="text-xs text-slate-300">
+              <div className="card-photo-overlay">
+                <div className="card-photo-content">
+                  <p className="card-photo-title">{photo.description}</p>
+                  <p className="card-photo-time">
                     {new Date(photo.timestamp).toLocaleDateString("ru-RU")}
                   </p>
                 </div>

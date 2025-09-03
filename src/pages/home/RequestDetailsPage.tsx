@@ -21,7 +21,7 @@ export default function RequestDetailsPage() {
 
   if (!task) {
     return (
-      <div className="min-h-screen bg-slate-900">
+      <div className="min-h-screen bg-slate-950">
         <Header />
         <main className="container-responsive py-6">
           <div className="text-center text-slate-400">Загрузка...</div>
@@ -31,7 +31,7 @@ export default function RequestDetailsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-900">
+    <div className="min-h-screen bg-slate-950">
       <Header />
       <main className="container-responsive py-6">
         <div className="space-y-6">

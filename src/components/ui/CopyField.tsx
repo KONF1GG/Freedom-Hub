@@ -27,24 +27,18 @@ export default function CopyField({
   }
 
   return (
-    <div className={`space-y-2 ${className}`}>
-      <label className="block text-sm font-medium text-slate-300">
-        {label}
-      </label>
-      <div className="flex gap-2">
+    <div className={`copy-field ${className}`}>
+      <label className="copy-field-label">{label}</label>
+      <div className="copy-field-container">
         <input
           type="text"
           value={value}
           readOnly
-          className="flex-1 px-3 py-2 bg-slate-800 border border-slate-700 rounded-lg text-white text-sm"
+          className="copy-field-input"
         />
         <button
           onClick={handleCopy}
-          className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-            copied
-              ? "bg-green-600 text-white"
-              : "bg-blue-600 hover:bg-blue-700 text-white"
-          }`}
+          className={`copy-button ${copied ? "copied" : "default"}`}
         >
           {copied ? "Скопировано" : "Копировать"}
         </button>

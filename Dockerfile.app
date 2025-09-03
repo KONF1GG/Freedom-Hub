@@ -45,7 +45,7 @@ RUN chown -R nodejs:nodejs /app
 USER nodejs
 
 # Открываем порт
-EXPOSE 3000
+EXPOSE 80
 
 # Запускаем приложение
 CMD ["npm", "start"]

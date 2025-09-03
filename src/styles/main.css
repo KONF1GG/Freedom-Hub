@@ -1,0 +1,249 @@
+/* Основной файл стилей - оптимизированный импорт */
+
+/* Базовые стили - критически важные */
+@import './base/reset.css';
+@import './base/variables.css';
+
+/* Основные компоненты - загружаются сразу */
+@import './base/typography.css';
+@import './base/layout.css';
+@import './components/header.css';
+@import './components/layout.css';
+@import './components/buttons.css';
+@import './components/forms.css';
+@import './components/telegram-login.css';
+@import './components/login-page.css';
+@import './components/copy-field.css';
+
+/* Дополнительные компоненты - загружаются по требованию */
+@import './components/cards.css';
+@import './components/navigation.css';
+@import './components/modals.css';
+@import './components/task-filters.css';
+@import './components/requests-list.css';
+@import './components/task-details.css';
+@import './components/utilities.css';
+
+/* Мобильные оптимизации */
+@import './mobile.css';
+
+/* Глобальные стили для приложения */
+body {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: var(--line-height-normal);
+}
+
+/* Улучшения для PWA */
+html, body, #root {
+  height: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+/* Мобильные улучшения */
+* {
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+}
+
+html, body {
+  touch-action: manipulation;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Внутренний скролл без bounce для основных контейнеров */
+.scroll-y {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+}
+
+/* PWA специфичные стили */
+.pwa-container {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+}
+
+/* Адаптивные контейнеры */
+.container-responsive {
+  width: 100%;
+  max-width: var(--container-2xl);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+@media (min-width: 640px) {
+  .container-responsive {
+    padding: 0 var(--spacing-xl);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-responsive {
+    padding: 0 var(--spacing-2xl);
+  }
+}
+
+/* Мобильная навигация */
+.mobile-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(15, 23, 42, 0.95);
+  border-top: 1px solid var(--color-border);
+  backdrop-filter: blur(8px);
+  padding-bottom: var(--safe-area-inset-bottom);
+  z-index: var(--z-fixed);
+}
+
+/* Безопасные зоны для мобильных устройств */
+.safe-area-top {
+  padding-top: var(--safe-area-inset-top);
+}
+
+.safe-area-bottom {
+  padding-bottom: var(--safe-area-inset-bottom);
+}
+
+.safe-area-left {
+  padding-left: var(--safe-area-inset-left);
+}
+
+.safe-area-right {
+  padding-right: var(--safe-area-inset-right);
+}
+
+/* Адаптивные кнопки */
+.btn-mobile {
+  min-height: 44px;
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Адаптивные карточки */
+.card-responsive {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  transition: all var(--transition-fast);
+}
+
+@media (min-width: 640px) {
+  .card-responsive {
+    padding: var(--spacing-xl);
+  }
+}
+
+/* Адаптивные формы */
+.form-responsive {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+@media (min-width: 640px) {
+  .form-responsive {
+    gap: var(--spacing-xl);
+  }
+}
+
+/* Адаптивные заголовки */
+.heading-responsive {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+}
+
+@media (min-width: 640px) {
+  .heading-responsive {
+    font-size: var(--font-size-xl);
+  }
+}
+
+@media (min-width: 1024px) {
+  .heading-responsive {
+    font-size: var(--font-size-2xl);
+  }
+}
+
+/* Адаптивный текст */
+.text-responsive {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+}
+
+@media (min-width: 640px) {
+  .text-responsive {
+    font-size: var(--font-size-base);
+  }
+}
+
+/* Утилиты для скрытия элементов */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Утилиты для печати */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-only {
+    display: block !important;
+  }
+}
+
+/* Утилиты для темной темы (если понадобится в будущем) */
+@media (prefers-color-scheme: dark) {
+  /* Стили уже оптимизированы для темной темы */
+}
+
+/* Утилиты для уменьшенной анимации */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Утилиты для высокого контраста */
+@media (prefers-contrast: high) {
+  .card,
+  .card-responsive {
+    border-width: 2px;
+  }
+  
+  .btn {
+    border-width: 2px;
+  }
+  
+  .input,
+  .select,
+  .textarea {
+    border-width: 2px;
+  }
+}

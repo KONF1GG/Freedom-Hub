@@ -1,0 +1,96 @@
+/* Стили для шапки сайта */
+
+header {
+  background-color: var(--color-slate-900);
+  border-bottom: 1px solid var(--color-slate-800);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(8px);
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4rem;
+  gap: var(--spacing-lg);
+}
+
+.header-brand h1 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.employer-name {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-normal);
+  margin-top: 0.125rem;
+}
+
+.logout-button {
+  background-color: var(--color-red-600);
+  color: white;
+  border: none;
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+  min-height: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logout-button:hover:not(:disabled) {
+  background-color: #b91c1c;
+}
+
+.logout-button:focus {
+  outline: 2px solid var(--color-red-500);
+  outline-offset: 2px;
+}
+
+.logout-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 640px) {
+  .header-container {
+    padding: 0 var(--spacing-sm);
+  }
+  
+  .header-content {
+    height: 3.5rem;
+    gap: var(--spacing-md);
+  }
+  
+  .header-brand h1 {
+    font-size: var(--font-size-lg);
+  }
+  
+  .employer-name {
+    font-size: var(--font-size-xs);
+  }
+  
+  .logout-button {
+    min-height: 44px;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-sm);
+  }
+}

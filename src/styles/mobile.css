@@ -1,0 +1,378 @@
+/* Оптимизированные стили для мобильных устройств */
+
+/* Мобильные улучшения для производительности */
+@media (max-width: 768px) {
+  /* Уменьшаем количество анимаций на мобильных */
+  * {
+    animation-duration: 0.1s !important;
+    transition-duration: 0.1s !important;
+  }
+  
+  /* Оптимизируем скролл */
+  .scroll-y {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+    scroll-behavior: smooth;
+  }
+  
+  /* Оптимизируем кнопки для touch */
+  .btn {
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
+  }
+  
+  .btn-sm {
+    min-height: 44px;
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+  
+  .btn-md {
+    min-height: 44px;
+    padding: var(--spacing-sm) var(--spacing-lg);
+  }
+  
+  .btn-lg {
+    min-height: 48px;
+    padding: var(--spacing-md) var(--spacing-xl);
+  }
+  
+  /* Оптимизируем инпуты */
+  .input,
+  .select,
+  .textarea {
+    min-height: 44px;
+    font-size: 16px; /* Предотвращает зум на iOS */
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  
+  /* Оптимизируем карточки */
+  .card {
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+  }
+  
+  .card-responsive {
+    padding: var(--spacing-lg);
+  }
+  
+  /* Оптимизируем навигацию */
+  .tabs-nav {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .tabs-nav::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .tabs-nav-item {
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-width: 44px;
+    min-height: 44px;
+  }
+  
+  /* Оптимизируем формы */
+  .form-responsive {
+    gap: var(--spacing-lg);
+  }
+  
+  .filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .filters-controls {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .search-input,
+  .filter-select {
+    width: 100%;
+    min-width: auto;
+  }
+  
+  /* Оптимизируем grid */
+  .grid-cols-3 {
+    grid-template-columns: 1fr;
+  }
+  
+  .md\\:grid-cols-2 {
+    grid-template-columns: 1fr;
+  }
+  
+  .md\\:grid-cols-3 {
+    grid-template-columns: 1fr;
+  }
+  
+  .lg\\:grid-cols-4 {
+    grid-template-columns: 1fr;
+  }
+  
+  .coords-field {
+    grid-template-columns: 1fr;
+  }
+  
+  .coords-display {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Оптимизируем индикаторы */
+  .card-indicators {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+  
+  .card-header {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    align-items: flex-start;
+  }
+  
+  /* Оптимизируем модальные окна */
+  .modal {
+    max-width: none;
+    width: 100%;
+    margin: var(--spacing-md);
+  }
+  
+  .modal-header,
+  .modal-body,
+  .modal-footer {
+    padding: var(--spacing-lg);
+  }
+  
+  .modal-footer {
+    flex-direction: column;
+  }
+  
+  .pwa-modal {
+    padding: var(--spacing-lg);
+  }
+  
+  .pwa-modal-content {
+    padding: var(--spacing-lg);
+  }
+  
+  .pwa-modal-actions {
+    flex-direction: column;
+  }
+  
+  /* Оптимизируем уведомления */
+  .toast-container {
+    left: var(--spacing-md);
+    right: var(--spacing-md);
+  }
+  
+  .pwa-hint {
+    left: var(--spacing-md);
+    right: var(--spacing-md);
+  }
+  
+  /* Оптимизируем заголовки */
+  .header-content {
+    padding: var(--spacing-md) 0;
+  }
+  
+  .header-title {
+    font-size: var(--font-size-lg);
+  }
+  
+  /* Оптимизируем контейнеры */
+  .container-responsive {
+    padding: 0 var(--spacing-md);
+  }
+  
+  /* Оптимизируем отступы */
+  .space-y-6 > * + * {
+    margin-top: var(--spacing-lg);
+  }
+  
+  .space-y-4 > * + * {
+    margin-top: var(--spacing-lg);
+  }
+  
+  .space-y-3 > * + * {
+    margin-top: var(--spacing-md);
+  }
+  
+  /* Оптимизируем типографику */
+  .heading-responsive {
+    font-size: var(--font-size-lg);
+  }
+  
+  .text-responsive {
+    font-size: var(--font-size-sm);
+  }
+  
+  /* Оптимизируем фото */
+  .card-photo img {
+    height: 6rem;
+  }
+  
+  /* Оптимизируем копирование */
+  .copy-field-input {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .copy-field-input input {
+    width: 100%;
+  }
+  
+  .btn-copy {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Дополнительные оптимизации для очень маленьких экранов */
+@media (max-width: 480px) {
+  .container-responsive {
+    padding: 0 var(--spacing-sm);
+  }
+  
+  .card {
+    padding: var(--spacing-md);
+  }
+  
+  .card-responsive {
+    padding: var(--spacing-md);
+  }
+  
+  .header-content {
+    padding: var(--spacing-sm) 0;
+  }
+  
+  .tabs-content {
+    padding: var(--spacing-md);
+  }
+  
+  .modal {
+    margin: var(--spacing-sm);
+  }
+  
+  .modal-header,
+  .modal-body,
+  .modal-footer {
+    padding: var(--spacing-md);
+  }
+  
+  .pwa-modal {
+    padding: var(--spacing-md);
+  }
+  
+  .pwa-modal-content {
+    padding: var(--spacing-md);
+  }
+}
+
+/* Оптимизации для landscape режима на мобильных */
+@media (max-width: 768px) and (orientation: landscape) {
+  .min-h-screen {
+    min-height: 100vh;
+  }
+  
+  .header-content {
+    padding: var(--spacing-sm) 0;
+  }
+  
+  .tabs-nav {
+    padding: 0 var(--spacing-md);
+  }
+  
+  .tabs-nav-item {
+    padding: var(--spacing-sm) var(--spacing-xs);
+  }
+  
+  .modal {
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  
+  .pwa-modal {
+    padding: var(--spacing-sm);
+  }
+  
+  .pwa-modal-content {
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+}
+
+/* Оптимизации для устройств с высоким DPI */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .card {
+    border-width: 0.5px;
+  }
+  
+  .input,
+  .select,
+  .textarea {
+    border-width: 0.5px;
+  }
+  
+  .btn {
+    border-width: 0.5px;
+  }
+}
+
+/* Оптимизации для устройств с темной темой */
+@media (prefers-color-scheme: dark) {
+  /* Стили уже оптимизированы для темной темы */
+}
+
+/* Оптимизации для устройств с уменьшенной анимацией */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .card:hover {
+    transform: none;
+  }
+  
+  .card:active {
+    transform: none;
+  }
+  
+  .btn:hover {
+    transform: none;
+  }
+  
+  .btn:active {
+    transform: none;
+  }
+}
+
+/* Оптимизации для устройств с высоким контрастом */
+@media (prefers-contrast: high) {
+  .card,
+  .card-responsive {
+    border-width: 2px;
+  }
+  
+  .btn {
+    border-width: 2px;
+  }
+  
+  .input,
+  .select,
+  .textarea {
+    border-width: 2px;
+  }
+  
+  .tabs-nav-item {
+    border-bottom-width: 3px;
+  }
+}

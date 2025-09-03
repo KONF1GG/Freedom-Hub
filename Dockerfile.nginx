@@ -19,7 +19,7 @@ RUN chown -R nextjs:nodejs /var/cache/nginx && \
 USER nextjs
 
 # Открываем порты
-EXPOSE 80 443
+EXPOSE 80
 
 # Запускаем nginx
 CMD ["nginx", "-g", "daemon off;"]

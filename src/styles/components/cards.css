@@ -1,0 +1,332 @@
+/* Стили для карточек */
+
+/* Базовые карточки */
+.card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  transition: all var(--transition-fast);
+}
+
+.card:hover {
+  border-color: var(--color-slate-600);
+}
+
+.card:active {
+  transform: scale(0.995);
+}
+
+/* Адаптивные карточки */
+.card-responsive {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  transition: all var(--transition-fast);
+}
+
+@media (min-width: 640px) {
+  .card-responsive {
+    padding: var(--spacing-xl);
+  }
+}
+
+/* Карточки с заголовком */
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-lg);
+}
+
+.card-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.card-description {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+}
+
+/* Карточки с индикаторами */
+.card-indicators {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.indicator {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  border: 1px solid;
+}
+
+.indicator-status {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  border: 1px solid;
+}
+
+.indicator-status.success {
+  background-color: rgba(34, 197, 94, 0.2);
+  color: var(--color-green-400);
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+.indicator-status.error {
+  background-color: rgba(239, 68, 68, 0.2);
+  color: var(--color-red-400);
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.indicator-priority {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  border: 1px solid;
+}
+
+.indicator-priority.high {
+  background-color: rgba(251, 146, 60, 0.2);
+  color: var(--color-orange-400);
+  border-color: rgba(251, 146, 60, 0.3);
+}
+
+.indicator-priority.normal {
+  background-color: rgba(100, 116, 139, 0.2);
+  color: var(--color-slate-400);
+  border-color: rgba(100, 116, 139, 0.3);
+}
+
+.indicator-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--radius-full);
+}
+
+.indicator-dot.success {
+  background-color: var(--color-green-400);
+}
+
+.indicator-dot.error {
+  background-color: var(--color-red-400);
+}
+
+/* Карточки с контентом */
+.card-content {
+  margin-bottom: var(--spacing-lg);
+}
+
+.card-content:last-child {
+  margin-bottom: 0;
+}
+
+.card-meta {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.card-text {
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--spacing-xs);
+  color: var(--color-text-primary);
+}
+
+.card-description-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Карточки с сеткой */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-sm);
+  font-size: 0.625rem;
+  color: var(--color-text-muted);
+}
+
+.card-grid-item {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card-grid-label {
+  color: var(--color-slate-500);
+}
+
+/* Карточки с адресом */
+.card-address {
+  margin-top: var(--spacing-sm);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.card-address svg {
+  width: 0.75rem;
+  height: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+/* Карточки с иконками */
+.card-icon {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  color: var(--color-amber-400);
+  font-size: var(--font-size-xs);
+}
+
+.card-icon svg {
+  width: 1rem;
+  height: 1rem;
+  color: var(--color-amber-400);
+}
+
+/* Карточки для истории */
+.card-history {
+  background-color: var(--color-slate-700);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  border: 1px solid var(--color-border-secondary);
+}
+
+.card-history-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-sm);
+}
+
+.card-history-title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-slate-200);
+}
+
+.card-history-time {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.card-history-description {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.card-history-user {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+/* Карточки для фото */
+.card-photo {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border-secondary);
+}
+
+.card-photo img {
+  width: 100%;
+  height: 8rem;
+  object-fit: cover;
+  transition: all var(--transition-normal);
+}
+
+.card-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0);
+  transition: all var(--transition-normal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-lg);
+}
+
+.card-photo:hover .card-photo-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.card-photo-content {
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+  text-align: center;
+  color: white;
+}
+
+.card-photo:hover .card-photo-content {
+  opacity: 1;
+}
+
+.card-photo-title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--spacing-xs);
+}
+
+.card-photo-time {
+  font-size: var(--font-size-xs);
+  color: var(--color-slate-300);
+}
+
+/* Адаптивные карточки */
+@media (max-width: 640px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xs);
+  }
+  
+  .card-indicators {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+  
+  .card-header {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    align-items: flex-start;
+  }
+}
+
+@media (min-width: 768px) {
+  .card-photo {
+    height: auto;
+  }
+  
+  .card-photo img {
+    height: 8rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card-photo img {
+    height: 8rem;
+  }
+}

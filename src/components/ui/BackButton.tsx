@@ -4,10 +4,7 @@ export default function BackButton() {
   const navigate = useNavigate();
 
   return (
-    <button
-      onClick={() => navigate(-1)}
-      className="flex items-center gap-2 px-3 py-2 text-slate-400 hover:text-white transition-colors"
-    >
+    <button onClick={() => navigate(-1)} className="back-button">
       <svg
         className="w-5 h-5"
         fill="none"

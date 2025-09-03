@@ -44,30 +44,26 @@ export default function RequestsList({ filters }: RequestsListProps) {
   }, [filteredRequests, isLoading, error]);
 
   return (
-    <div className="space-y-3">
-      {isLoading && <div className="text-sm text-slate-300">Загрузка…</div>}
-      {error && <div className="text-sm text-red-400">Ошибка: {error}</div>}
+    <div className="requests-list">
+      {isLoading && <div className="loading-message">Загрузка…</div>}
+      {error && <div className="error-message">Ошибка: {error}</div>}
       {filteredRequests.length === 0 && !isLoading && (
-        <div className="text-center py-8 text-slate-400">
-          <div className="text-lg mb-2">📋 Нет задач</div>
-          <div className="text-sm">
+        <div className="empty-state">
+          <div className="empty-state-icon">📋 Нет задач</div>
+          <div className="empty-state-text">
             Попробуйте изменить фильтры или создать новую задачу
           </div>
         </div>
       )}
 
       {filteredRequests.map((task: any) => (
-        <Link
-          key={task.id}
-          to={`/tasks/${task.id}`}
-          className="block rounded-xl bg-slate-900/70 border border-slate-800 hover:border-slate-700 active:scale-[0.995] transition-transform"
-        >
-          <div className="p-4">
+        <Link key={task.id} to={`/tasks/${task.id}`} className="request-card">
+          <div className="request-card-content">
             {/* Заголовок с номером и индикаторами */}
-            <div className="flex items-center justify-between mb-2">
-              <div className="flex items-center gap-2 text-amber-400 text-xs">
+            <div className="request-header">
+              <div className="request-number">
                 <svg
-                  className="h-4 w-4"
+                  className="request-icon"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -81,18 +77,16 @@ export default function RequestsList({ filters }: RequestsListProps) {
               </div>
 
               {/* Индикаторы статуса и приоритета */}
-              <div className="flex items-center gap-2">
+              <div className="request-indicators">
                 {/* Статус */}
                 <div
-                  className={`flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium ${
-                    task.status
-                      ? "bg-green-500/20 text-green-400 border border-green-500/30"
-                      : "bg-red-500/20 text-red-400 border border-red-500/30"
+                  className={`status-indicator ${
+                    task.status ? "completed" : "pending"
                   }`}
                 >
                   <div
-                    className={`w-2 h-2 rounded-full ${
-                      task.status ? "bg-green-400" : "bg-red-400"
+                    className={`status-dot ${
+                      task.status ? "completed" : "pending"
                     }`}
                   ></div>
                   {task.status ? "Выполнена" : "Не выполнена"}
@@ -100,15 +94,13 @@ export default function RequestsList({ filters }: RequestsListProps) {
 
                 {/* Приоритет */}
                 <div
-                  className={`flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium ${
-                    task.priority
-                      ? "bg-orange-500/20 text-orange-400 border border-orange-500/30"
-                      : "bg-slate-500/20 text-slate-400 border border-slate-500/30"
+                  className={`priority-indicator ${
+                    task.priority ? "high" : "normal"
                   }`}
                 >
                   <svg
-                    className={`w-3 h-3 ${
-                      task.priority ? "text-orange-400" : "text-slate-400"
+                    className={`priority-icon ${
+                      task.priority ? "high" : "normal"
                     }`}
                     fill="currentColor"
                     viewBox="0 0 20 20"
@@ -124,35 +116,33 @@ export default function RequestsList({ filters }: RequestsListProps) {
               </div>
             </div>
 
-            <div className="text-xs text-slate-300 mb-2">
+            <div className="request-dates">
               {formatRange(task.begin_date, task.due_date)}
             </div>
-            <div className="font-medium mb-1 text-white">
+            <div className="request-title">
               {task.title || task.description || "Без названия"}
             </div>
             {task.description && task.description !== task.title && (
-              <div className="text-sm text-slate-300 mb-2">
-                {task.description}
-              </div>
+              <div className="request-description">{task.description}</div>
             )}
-            <div className="mt-2 grid grid-cols-3 gap-2 text-[10px] text-slate-400">
-              <div className="truncate">
-                <span className="text-slate-500">Тип:</span>{" "}
+            <div className="request-details">
+              <div className="request-detail">
+                <span className="detail-label">Тип:</span>{" "}
                 {task.objectType || "-"}
               </div>
-              <div className="truncate">
-                <span className="text-slate-500">Услуга:</span>{" "}
+              <div className="request-detail">
+                <span className="detail-label">Услуга:</span>{" "}
                 {task.serviceType || "-"}
               </div>
-              <div className="truncate">
-                <span className="text-slate-500">Клиент:</span>{" "}
+              <div className="request-detail">
+                <span className="detail-label">Клиент:</span>{" "}
                 {task.client || "-"}
               </div>
             </div>
             {task.address && (
-              <div className="mt-2 text-xs text-slate-400">
+              <div className="request-address">
                 <svg
-                  className="inline w-3 h-3 mr-1"
+                  className="address-icon"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >

@@ -57,31 +57,26 @@ export default function InstallPwaHint() {
   }
 
   return (
-    <div className="fixed bottom-4 inset-x-0 px-4 z-50">
-      <div className="mx-auto max-w-sm bg-slate-900/95 border border-slate-800 rounded-xl p-4 shadow-xl backdrop-blur">
-        <div className="flex items-center justify-between gap-3">
-          <div className="text-sm text-slate-100">
-            Установите приложение для лучшего опыта
-          </div>
-          <button
-            className="rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm px-3 py-1.5 transition-colors"
-            onClick={handleInstallClick}
-          >
-            Установить
-          </button>
+    <div className="pwa-hint">
+      <div className="pwa-hint-content">
+        <div className="pwa-hint-text">
+          Установите приложение для лучшего опыта
         </div>
-        {showHelp && (
-          <div className="mt-3 text-xs text-slate-300">
-            {isIosDevice ? (
-              <>Откройте меню Safari и выберите «На экран "Домой"»</>
-            ) : isAndroidDevice ? (
-              <>Откройте меню браузера и выберите «Установить приложение»</>
-            ) : (
-              <>Откройте меню браузера и выберите «Установить приложение»</>
-            )}
-          </div>
-        )}
+        <button className="pwa-hint-button" onClick={handleInstallClick}>
+          Установить
+        </button>
       </div>
+      {showHelp && (
+        <div className="pwa-hint-help">
+          {isIosDevice ? (
+            <>Откройте меню Safari и выберите «На экран "Домой"»</>
+          ) : isAndroidDevice ? (
+            <>Откройте меню браузера и выберите «Установить приложение»</>
+          ) : (
+            <>Откройте меню браузера и выберите «Установить приложение»</>
+          )}
+        </div>
+      )}
     </div>
   );
 }
