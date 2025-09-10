@@ -37,9 +37,7 @@ export default function RequestDetailsPage() {
         <div className="space-y-6">
           <div className="flex items-center gap-4">
             <BackButton />
-            <h1 className="heading-responsive text-white">
-              Заявка №{task.contract_number || task.id}
-            </h1>
+            <h1 className="heading-responsive text-white">Заявка №{task.id}</h1>
           </div>
           <TaskDetails task={task} />
         </div>

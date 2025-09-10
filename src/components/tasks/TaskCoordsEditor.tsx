@@ -49,31 +49,40 @@ export default function TaskCoordsEditor({
   }
 
   return (
-    <div className="space-y-3">
-      <label className="label">Координаты</label>
-      <div className="coords-field">
-        <input
-          type="number"
-          step="any"
-          value={lat}
-          onChange={(e) => setLat(parseFloat(e.target.value) || 0)}
-          placeholder="Широта"
-          className="input"
-        />
-        <input
-          type="number"
-          step="any"
-          value={lng}
-          onChange={(e) => setLng(parseFloat(e.target.value) || 0)}
-          placeholder="Долгота"
-          className="input"
-        />
+    <div className="d-flex flex-column gap-4">
+      <div className="d-flex flex-column gap-3">
+        <div className="form-group">
+          <label className="form-label">Широта</label>
+          <input
+            type="number"
+            step="any"
+            value={lat || ""}
+            onChange={(e) => setLat(parseFloat(e.target.value) || 0)}
+            className="form-input"
+            placeholder="0.000000"
+          />
+        </div>
+        <div className="form-group">
+          <label className="form-label">Долгота</label>
+          <input
+            type="number"
+            step="any"
+            value={lng || ""}
+            onChange={(e) => setLng(parseFloat(e.target.value) || 0)}
+            className="form-input"
+            placeholder="0.000000"
+          />
+        </div>
       </div>
-      <div className="flex gap-2">
-        <button onClick={handleSave} className="btn btn-sm btn-primary">
-          Сохранить
+      <div className="d-flex gap-3">
+        <button
+          onClick={handleSave}
+          disabled={!lat || !lng}
+          className="btn btn-primary"
+        >
+          Сохранить координаты
         </button>
-        <button onClick={handleCancel} className="btn-cancel">
+        <button onClick={handleCancel} className="btn btn-secondary">
           Отмена
         </button>
       </div>

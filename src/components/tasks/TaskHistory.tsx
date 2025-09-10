@@ -14,23 +14,41 @@ export default function TaskHistory({ history }: TaskHistoryProps) {
   }
 
   return (
-    <div className="space-y-3">
-      {history.map((entry, index) => (
-        <div key={index} className="card-history">
-          <div className="card-history-header">
-            <span className="card-history-title">{entry.action}</span>
-            <span className="card-history-time">
-              {new Date(entry.timestamp).toLocaleString("ru-RU")}
-            </span>
+    <div className="d-flex flex-column gap-4">
+      {history.length === 0 ? (
+        <div className="text-center py-8">
+          <div className="mb-4" style={{ fontSize: "3rem" }}>
+            📜
           </div>
-          {entry.description && (
-            <p className="card-history-description">{entry.description}</p>
-          )}
-          {entry.user && (
-            <p className="card-history-user">Пользователь: {entry.user}</p>
-          )}
+          <div className="text-secondary">История изменений пуста</div>
         </div>
-      ))}
+      ) : (
+        <div className="d-flex flex-column gap-3">
+          {history.map((entry, index) => (
+            <div key={index} className="card">
+              <div className="card-body">
+                <div className="d-flex justify-content-between align-items-start mb-3">
+                  <div className="font-semibold text-lg">{entry.action}</div>
+                  <div className="text-muted text-sm">
+                    {new Date(entry.timestamp).toLocaleString("ru-RU")}
+                  </div>
+                </div>
+                {entry.description && (
+                  <div className="text-secondary mb-3">{entry.description}</div>
+                )}
+                {entry.user && (
+                  <div className="d-flex align-items-center gap-2">
+                    <span className="text-muted">Пользователь:</span>
+                    <span className="text-primary font-medium">
+                      {entry.user}
+                    </span>
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

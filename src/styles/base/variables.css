@@ -1,102 +1,193 @@
-/* CSS переменные для цветов, размеров и других значений */
+/* Современная система CSS переменных в стиле Т-банка - ТОЛЬКО ТЕМНАЯ ТЕМА */
 
 :root {
-  /* Цветовая палитра */
-  --color-slate-50: #f8fafc;
-  --color-slate-100: #f1f5f9;
-  --color-slate-200: #e2e8f0;
-  --color-slate-300: #cbd5e1;
-  --color-slate-400: #94a3b8;
-  --color-slate-500: #64748b;
-  --color-slate-600: #475569;
-  --color-slate-700: #334155;
-  --color-slate-800: #1e293b;
-  --color-slate-900: #0f172a;
-  --color-slate-950: #020617;
-
-  /* Брендовые цвета */
-  --color-brand-50: #eef2ff;
-  --color-brand-100: #e0e7ff;
-  --color-brand-600: #4f46e5;
-  --color-brand-700: #4338ca;
-
-  /* Системные цвета */
-  --color-blue-500: #3b82f6;
-  --color-blue-600: #2563eb;
-  --color-blue-700: #1d4ed8;
-  --color-green-400: #4ade80;
-  --color-green-500: #22c55e;
-  --color-green-600: #16a34a;
-  --color-red-400: #f87171;
-  --color-red-500: #ef4444;
-  --color-red-600: #dc2626;
-  --color-orange-400: #fb923c;
-  --color-orange-500: #f97316;
-  --color-orange-600: #ea580c;
-  --color-amber-400: #fbbf24;
-
-  /* Основные цвета приложения */
-  --color-primary: var(--color-slate-800);
-  --color-secondary: var(--color-slate-700);
-  --color-background: var(--color-slate-950);
-  --color-surface: var(--color-slate-800);
-  --color-surface-secondary: var(--color-slate-900);
-  --color-text-primary: var(--color-slate-100);
-  --color-text-secondary: var(--color-slate-300);
-  --color-text-muted: var(--color-slate-400);
-  --color-border: var(--color-slate-700);
-  --color-border-secondary: var(--color-slate-600);
-
-  /* Размеры */
-  --spacing-xs: 0.25rem;   /* 4px */
-  --spacing-sm: 0.5rem;    /* 8px */
-  --spacing-md: 0.75rem;   /* 12px */
-  --spacing-lg: 1rem;      /* 16px */
-  --spacing-xl: 1.5rem;    /* 24px */
-  --spacing-2xl: 2rem;     /* 32px */
-  --spacing-3xl: 3rem;     /* 48px */
-  --spacing-4xl: 4rem;     /* 64px */
-
-  /* Размеры шрифтов */
-  --font-size-xs: 0.75rem;     /* 12px */
-  --font-size-sm: 0.875rem;    /* 14px */
-  --font-size-base: 1rem;      /* 16px */
-  --font-size-lg: 1.125rem;    /* 18px */
-  --font-size-xl: 1.25rem;     /* 20px */
-  --font-size-2xl: 1.5rem;     /* 24px */
-  --font-size-3xl: 1.875rem;   /* 30px */
-
+  /* === ЦВЕТОВАЯ ПАЛИТРА 2025 (ТЕМНАЯ ТЕМА) === */
+  
+  /* ОСНОВНАЯ ПАЛИТРА (60-30-10 ПРАВИЛО) */
+  
+  /* 60% - Основной нейтральный (фоны) - избегаем чистого черного */
+  --color-primary-bg: hsl(220, 13%, 9%);        /* Очень темно-серый с легким синим оттенком */
+  --color-secondary-bg: hsl(220, 13%, 12%);     /* Чуть светлее для контраста */
+  --color-card-bg: hsl(220, 13%, 15%);          /* Карточки - темно-серый */
+  
+  /* 30% - Вторичный (секции, карточки) - приглушенные цвета */
+  --color-primary: hsl(200, 100%, 70%);         /* Мягкий голубой для доверия */
+  --color-primary-hover: hsl(200, 100%, 80%);   /* Светлее для hover */
+  --color-primary-light: hsl(200, 100%, 80%);   /* Светлее для hover */
+  --color-primary-dark: hsl(200, 100%, 60%);    /* Темнее для активных */
+  --color-primary-muted: hsl(200, 30%, 25%);    /* Приглушенный для фонов */
+  
+  /* 10% - Акцент (кнопки, CTA) - приглушенный красный */
+  --color-accent: hsl(0, 70%, 65%);             /* Приглушенный красный для срочности */
+  --color-accent-hover: hsl(0, 70%, 75%);       /* Светлее для hover */
+  --color-accent-light: hsl(0, 70%, 75%);       /* Светлее для hover */
+  --color-accent-dark: hsl(0, 70%, 55%);        /* Темнее для активных */
+  
+  /* ТРЕНДЫ 2025 - ДОПОЛНИТЕЛЬНЫЕ ЦВЕТА ДЛЯ ТЕМНОЙ ТЕМЫ */
+  --color-mocha: hsl(30, 25%, 60%);             /* Mocha Mousse - теплый коричневый */
+  --color-lavender: hsl(270, 40%, 70%);         /* Creamy Lavender - приглушенный фиолетовый */
+  --color-verdant: hsl(120, 40%, 65%);          /* Verdant Green - приглушенный зеленый */
+  --color-sunny: hsl(50, 90%, 70%);             /* Sunny Yellow - приглушенный желтый */
+  
+  /* СЕМАНТИЧЕСКИЕ ЦВЕТА (ДОСТУПНОСТЬ) - приглушенные */
+  --color-success: hsl(120, 50%, 60%);          /* Приглушенный зеленый для успеха */
+  --color-success-hover: hsl(120, 50%, 70%);    /* Светлее для hover */
+  --color-success-light: hsl(120, 30%, 20%);    /* Темный фон */
+  
+  --color-danger: hsl(0, 70%, 65%);             /* Приглушенный красный для ошибок */
+  --color-danger-hover: hsl(0, 70%, 75%);       /* Светлее для hover */
+  --color-danger-light: hsl(0, 30%, 20%);       /* Темный фон */
+  
+  --color-warning: hsl(45, 90%, 70%);           /* Приглушенный желтый для предупреждения */
+  --color-warning-hover: hsl(45, 90%, 80%);     /* Светлее для hover */
+  --color-warning-light: hsl(45, 30%, 20%);     /* Темный фон */
+  
+  --color-info: hsl(200, 100%, 70%);            /* Голубой для информации */
+  --color-info-hover: hsl(200, 100%, 80%);      /* Светлее для hover */
+  --color-info-light: hsl(200, 30%, 20%);       /* Темный фон */
+  
+  /* ДОПОЛНИТЕЛЬНЫЕ ЦВЕТА */
+  --color-secondary: hsl(200, 100%, 70%);       /* Голубой как вторичный */
+  --color-secondary-hover: hsl(200, 100%, 80%); /* Светлее для hover */
+  --color-secondary-light: hsl(200, 30%, 20%);  /* Темный фон */
+  --color-secondary-dark: hsl(200, 100%, 60%);  /* Темнее */
+  
+  --color-muted: hsl(220, 10%, 60%);            /* Светло-серый для приглушенного текста */
+  --color-muted-hover: hsl(220, 10%, 70%);      /* Светлее для hover */
+  --color-muted-light: hsl(220, 10%, 20%);      /* Темный фон */
+  --color-muted-dark: hsl(220, 10%, 50%);       /* Темнее */
+  
+  --color-teal: hsl(120, 40%, 65%);             /* Verdant Green */
+  --color-teal-hover: hsl(120, 40%, 75%);       /* Светлее для hover */
+  --color-teal-light: hsl(120, 20%, 20%);       /* Темный фон */
+  --color-teal-dark: hsl(120, 40%, 55%);        /* Темнее */
+  
+  /* Нейтральные цвета для темной темы */
+  --color-white: #FFFFFF;
+  --color-light: hsl(220, 13%, 20%);
+  --color-gray-50: hsl(220, 13%, 20%);
+  --color-gray-100: hsl(220, 13%, 25%);
+  --color-gray-200: hsl(220, 13%, 30%);
+  --color-gray-300: hsl(220, 13%, 40%);
+  --color-gray-400: hsl(220, 13%, 50%);
+  --color-gray-500: hsl(220, 13%, 60%);
+  --color-gray-600: hsl(220, 13%, 70%);
+  --color-gray-700: hsl(220, 13%, 80%);
+  --color-gray-800: hsl(220, 13%, 90%);
+  --color-gray-900: hsl(220, 13%, 95%);
+  --color-black: #000000;
+  
+  /* ТЕКСТОВЫЕ ЦВЕТА (ВЫСОКИЙ КОНТРАСТ WCAG) */
+  --color-text-primary: hsl(220, 10%, 95%);     /* Почти белый - контраст 7:1 (AAA) */
+  --color-text-secondary: hsl(220, 10%, 75%);   /* Светло-серый - контраст 4.5:1 (AA) */
+  --color-text-muted: hsl(220, 10%, 60%);       /* Средне-серый - контраст 3:1 (AA) */
+  --color-text-inverse: hsl(220, 13%, 9%);      /* Темный для светлых фонов */
+  --color-text-on-primary: hsl(220, 13%, 9%);   /* Темный на цветном фоне */
+  --color-text-on-secondary: hsl(220, 13%, 9%); /* Темный на вторичном фоне */
+  
+  /* ФОНОВЫЕ ЦВЕТА (ТРЕНДЫ 2025) */
+  --color-background: linear-gradient(135deg, var(--color-primary-bg) 0%, var(--color-secondary-bg) 100%);
+  --color-background-secondary: linear-gradient(135deg, var(--color-primary-muted) 0%, var(--color-secondary-bg) 100%);
+  --color-background-dark: linear-gradient(135deg, var(--color-mocha) 0%, hsl(30, 20%, 15%) 100%);
+  --color-background-card: var(--color-card-bg);
+  --color-background-glass: hsla(220, 13%, 15%, 0.8);
+  
+  /* ГРАНИЦЫ И ТЕНИ */
+  --color-border: hsl(220, 13%, 25%);           /* Темно-серые границы */
+  --color-border-light: hsl(220, 13%, 20%);     /* Очень темные границы */
+  --color-border-dark: hsl(220, 13%, 35%);      /* Светлые границы */
+  --color-border-glass: hsla(220, 13%, 25%, 0.5); /* Полупрозрачные границы */
+  
+  /* === ТИПОГРАФИКА === */
+  
+  /* СЕМЕЙСТВО ШРИФТОВ (ЧИТАЕМОСТЬ) */
+  --font-family-base: 'Roboto', 'Arial', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family-heading: 'Roboto', 'Arial', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  
+  /* Размеры шрифтов (модульная шкала) */
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-base: 1rem;     /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-size-2xl: 1.5rem;    /* 24px */
+  --font-size-3xl: 1.875rem;  /* 30px */
+  --font-size-4xl: 2.25rem;   /* 36px */
+  --font-size-5xl: 3rem;      /* 48px */
+  
   /* Веса шрифтов */
+  --font-weight-light: 300;
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
-
-  /* Высота строк */
+  --font-weight-extrabold: 800;
+  
+  /* МЕЖСТРОЧНЫЕ ИНТЕРВАЛЫ (ДОСТУПНОСТЬ) */
   --line-height-tight: 1.25;
-  --line-height-normal: 1.5;
+  --line-height-normal: 1.5;    /* Минимум для доступности */
   --line-height-relaxed: 1.75;
-
-  /* Радиусы скругления */
-  --radius-sm: 0.25rem;    /* 4px */
-  --radius-md: 0.375rem;   /* 6px */
-  --radius-lg: 0.5rem;     /* 8px */
-  --radius-xl: 0.75rem;    /* 12px */
-  --radius-2xl: 1rem;      /* 16px */
+  
+  /* МЕЖБУКВЕННЫЕ ИНТЕРВАЛЫ (ЧИТАЕМОСТЬ) */
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.025em;
+  
+  /* === ОТСТУПЫ (SPACING) === */
+  
+  --spacing-0: 0;
+  --spacing-1: 0.25rem;   /* 4px */
+  --spacing-2: 0.5rem;    /* 8px */
+  --spacing-3: 0.75rem;   /* 12px */
+  --spacing-4: 1rem;      /* 16px */
+  --spacing-5: 1.25rem;   /* 20px */
+  --spacing-6: 1.5rem;    /* 24px */
+  --spacing-8: 2rem;      /* 32px */
+  --spacing-10: 2.5rem;   /* 40px */
+  --spacing-12: 3rem;     /* 48px */
+  --spacing-16: 4rem;     /* 64px */
+  --spacing-20: 5rem;     /* 80px */
+  --spacing-24: 6rem;     /* 96px */
+  
+  /* === СКРУГЛЕНИЯ === */
+  
+  --radius-none: 0;
+  --radius-sm: 0.25rem;   /* 4px */
+  --radius-base: 0.375rem; /* 6px */
+  --radius-md: 0.5rem;    /* 8px */
+  --radius-lg: 0.75rem;   /* 12px */
+  --radius-xl: 1rem;      /* 16px */
+  --radius-2xl: 1.5rem;   /* 24px */
   --radius-full: 9999px;
-
-  /* Тени */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-
-  /* Переходы */
-  --transition-fast: 150ms ease-in-out;
-  --transition-normal: 200ms ease-in-out;
-  --transition-slow: 300ms ease-in-out;
-
-  /* Z-index слои */
+  
+  /* === ТЕНИ В СТИЛЕ ТЕМНОЙ ТЕМЫ === */
+  
+  /* ТЕНИ (МЯГКИЕ ДЛЯ ГЛУБИНЫ) */
+  --shadow-sm: 0 1px 3px hsla(0, 0%, 0%, 0.3);
+  --shadow-base: 0 4px 6px hsla(0, 0%, 0%, 0.3), 0 2px 4px hsla(0, 0%, 0%, 0.2);
+  --shadow-md: 0 8px 15px hsla(0, 0%, 0%, 0.3), 0 4px 6px hsla(0, 0%, 0%, 0.2);
+  --shadow-lg: 0 20px 25px hsla(0, 0%, 0%, 0.3), 0 10px 10px hsla(0, 0%, 0%, 0.2);
+  --shadow-xl: 0 25px 50px hsla(0, 0%, 0%, 0.4);
+  --shadow-2xl: 0 35px 60px hsla(0, 0%, 0%, 0.5);
+  --shadow-inner: inset 0 2px 4px hsla(0, 0%, 0%, 0.2);
+  
+  /* СПЕЦИАЛЬНЫЕ ТЕНИ ДЛЯ КРАСИВОГО ДИЗАЙНА */
+  --shadow-card: 0 8px 30px hsla(0, 0%, 0%, 0.4);
+  --shadow-button: 0 2px 4px hsla(0, 0%, 0%, 0.3);
+  --shadow-button-hover: 0 8px 25px hsla(0, 0%, 0%, 0.4);
+  --shadow-modal: 0 35px 60px hsla(0, 0%, 0%, 0.5);
+  --shadow-glass: 0 8px 32px hsla(0, 0%, 0%, 0.3);
+  --shadow-glow: 0 0 20px hsla(200, 100%, 70%, 0.3);
+  
+  /* === ПЕРЕХОДЫ === */
+  
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* === Z-INDEX === */
+  
   --z-dropdown: 1000;
   --z-sticky: 1020;
   --z-fixed: 1030;
@@ -104,25 +195,23 @@
   --z-modal: 1050;
   --z-popover: 1060;
   --z-tooltip: 1070;
-  --z-toast: 1080;
-
-  /* Брейкпоинты (для медиа-запросов) */
-  --breakpoint-sm: 640px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 1024px;
-  --breakpoint-xl: 1280px;
-  --breakpoint-2xl: 1536px;
-
-  /* Размеры контейнеров */
-  --container-sm: 640px;
-  --container-md: 768px;
-  --container-lg: 1024px;
-  --container-xl: 1280px;
-  --container-2xl: 1536px;
-
+  
+  /* === РАЗМЕРЫ КОНТЕЙНЕРОВ === */
+  
+  --container-sm: 540px;
+  --container-md: 720px;
+  --container-lg: 960px;
+  --container-xl: 1140px;
+  --container-2xl: 1320px;
+  
+  /* === МОБИЛЬНЫЕ ОПТИМИЗАЦИИ === */
+  
+  /* Минимальные размеры для touch-элементов */
+  --touch-target-min: 44px;
+  
   /* Безопасные зоны для мобильных устройств */
-  --safe-area-inset-top: env(safe-area-inset-top, 0px);
-  --safe-area-inset-right: env(safe-area-inset-right, 0px);
-  --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
-  --safe-area-inset-left: env(safe-area-inset-left, 0px);
+  --safe-area-inset-top: env(safe-area-inset-top);
+  --safe-area-inset-right: env(safe-area-inset-right);
+  --safe-area-inset-bottom: env(safe-area-inset-bottom);
+  --safe-area-inset-left: env(safe-area-inset-left);
 }

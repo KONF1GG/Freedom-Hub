@@ -20,14 +20,20 @@ export default function HomePage() {
         <div className="page-container">
           <div className="page-header">
             <h1>Заявки</h1>
-            <TaskFilters
-              filters={filters}
-              onFiltersChange={setFilters}
-              totalCount={allRequests.length}
-              filteredCount={filteredRequests.length}
-            />
           </div>
-          <RequestsList filters={filters} />
+          <div className="content-layout">
+            <div className="filters-section">
+              <TaskFilters
+                filters={filters}
+                onFiltersChange={setFilters}
+                totalCount={allRequests.length}
+                filteredCount={filteredRequests.length}
+              />
+            </div>
+            <div className="requests-section">
+              <RequestsList filters={filters} />
+            </div>
+          </div>
         </div>
       </main>
     </div>

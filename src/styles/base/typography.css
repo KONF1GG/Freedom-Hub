@@ -1,207 +1,225 @@
-/* Типографика */
+/* Современная типографическая система */
 
-/* Базовые стили для текста */
-.text-xs {
-  font-size: var(--font-size-xs);
-  line-height: var(--line-height-tight);
+/* === БАЗОВЫЕ СТИЛИ === */
+html {
+  font-size: 16px; /* Базовая единица для rem */
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
 }
 
-.text-sm {
-  font-size: var(--font-size-sm);
-  line-height: var(--line-height-normal);
-}
-
-.text-base {
+body {
+  font-family: var(--font-family-base);
   font-size: var(--font-size-base);
-  line-height: var(--line-height-normal);
-}
-
-.text-lg {
-  font-size: var(--font-size-lg);
-  line-height: var(--line-height-normal);
-}
-
-.text-xl {
-  font-size: var(--font-size-xl);
-  line-height: var(--line-height-tight);
-}
-
-.text-2xl {
-  font-size: var(--font-size-2xl);
-  line-height: var(--line-height-tight);
-}
-
-.text-3xl {
-  font-size: var(--font-size-3xl);
-  line-height: var(--line-height-tight);
-}
-
-/* Веса шрифтов */
-.font-normal {
   font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.font-medium {
-  font-weight: var(--font-weight-medium);
+/* === ЗАГОЛОВКИ === */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
 }
 
-.font-semibold {
-  font-weight: var(--font-weight-semibold);
+h1 {
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--spacing-6);
 }
 
-.font-bold {
+h2 {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--spacing-5);
+}
+
+h3 {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-4);
+}
+
+h4 {
+  font-size: var(--font-size-base);
+  margin-bottom: var(--spacing-3);
+}
+
+h5 {
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-2);
+}
+
+h6 {
+  font-size: var(--font-size-xs);
+  margin-bottom: var(--spacing-2);
+}
+
+/* === ПАРАГРАФЫ === */
+p {
+  margin: 0 0 var(--spacing-4) 0;
+  line-height: var(--line-height-normal);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* === ССЫЛКИ === */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+/* Убираем hover для ссылок */
+
+a:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* === СПИСКИ === */
+ul, ol {
+  margin: 0 0 var(--spacing-4) 0;
+  padding-left: var(--spacing-6);
+}
+
+li {
+  margin-bottom: var(--spacing-1);
+}
+
+ul ul, ol ol, ul ol, ol ul {
+  margin-bottom: 0;
+}
+
+/* === ВЫДЕЛЕНИЕ ТЕКСТА === */
+strong, b {
   font-weight: var(--font-weight-bold);
 }
 
-/* Цвета текста */
-.text-white {
+em, i {
+  font-style: italic;
+}
+
+mark {
+  background-color: var(--color-warning-light);
   color: var(--color-text-primary);
+  padding: 0.125em 0.25em;
+  border-radius: var(--radius-sm);
 }
 
-.text-slate-100 {
+/* === МОНОШИРИННЫЙ ШРИФТ === */
+code, pre, kbd, samp {
+  font-family: var(--font-family-mono);
+  font-size: 0.875em;
+}
+
+code {
+  background-color: var(--color-gray-100);
+  color: var(--color-danger);
+  padding: 0.125em 0.25em;
+  border-radius: var(--radius-sm);
+}
+
+pre {
+  background-color: var(--color-gray-100);
   color: var(--color-text-primary);
+  padding: var(--spacing-4);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  margin-bottom: var(--spacing-4);
 }
 
-.text-slate-200 {
-  color: #e2e8f0;
+pre code {
+  background-color: transparent;
+  color: inherit;
+  padding: 0;
 }
 
-.text-slate-300 {
+/* === ЦИТАТЫ === */
+blockquote {
+  margin: 0 0 var(--spacing-4) 0;
+  padding: var(--spacing-4) var(--spacing-6);
+  border-left: 4px solid var(--color-primary);
+  background-color: var(--color-gray-100);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* === МАЛЫЙ ТЕКСТ === */
+small {
+  font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
 }
 
-.text-slate-400 {
-  color: var(--color-text-muted);
+/* === РАЗДЕЛИТЕЛИ === */
+hr {
+  margin: var(--spacing-8) 0;
+  border: 0;
+  border-top: 1px solid var(--color-border);
 }
 
-.text-slate-500 {
-  color: var(--color-slate-500);
-}
+/* === УТИЛИТЫ ДЛЯ ТЕКСТА === */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-justify { text-align: justify; }
 
-.text-blue-400 {
-  color: #60a5fa;
-}
+.text-uppercase { text-transform: uppercase; }
+.text-lowercase { text-transform: lowercase; }
+.text-capitalize { text-transform: capitalize; }
 
-.text-blue-500 {
-  color: var(--color-blue-500);
-}
-
-.text-green-400 {
-  color: var(--color-green-400);
-}
-
-.text-red-400 {
-  color: var(--color-red-400);
-}
-
-.text-orange-400 {
-  color: var(--color-orange-400);
-}
-
-.text-amber-400 {
-  color: var(--color-amber-400);
-}
-
-/* Выравнивание текста */
-.text-left {
-  text-align: left;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.text-right {
-  text-align: right;
-}
-
-/* Декорация текста */
-.underline {
-  text-decoration: underline;
-}
-
-.no-underline {
-  text-decoration: none;
-}
-
-/* Обрезка текста */
-.truncate {
+.text-truncate {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-/* Заголовки */
-h1, .h1 {
-  font-size: var(--font-size-3xl);
-  font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-tight);
-  color: var(--color-text-primary);
-}
+/* === ЦВЕТА ТЕКСТА === */
+.text-primary { color: var(--color-primary); }
+.text-secondary { color: var(--color-secondary); }
+.text-success { color: var(--color-success); }
+.text-danger { color: var(--color-danger); }
+.text-warning { color: var(--color-warning); }
+.text-info { color: var(--color-info); }
+.text-muted { color: var(--color-text-muted); }
+.text-white { color: var(--color-white); }
 
-h2, .h2 {
-  font-size: var(--font-size-2xl);
-  font-weight: var(--font-weight-semibold);
-  line-height: var(--line-height-tight);
-  color: var(--color-text-primary);
-}
+/* === РАЗМЕРЫ ТЕКСТА === */
+.text-xs { font-size: var(--font-size-xs); }
+.text-sm { font-size: var(--font-size-sm); }
+.text-base { font-size: var(--font-size-base); }
+.text-lg { font-size: var(--font-size-lg); }
+.text-xl { font-size: var(--font-size-xl); }
+.text-2xl { font-size: var(--font-size-2xl); }
+.text-3xl { font-size: var(--font-size-3xl); }
 
-h3, .h3 {
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-semibold);
-  line-height: var(--line-height-tight);
-  color: var(--color-text-primary);
-}
+/* === ВЕСА ШРИФТА === */
+.font-light { font-weight: var(--font-weight-light); }
+.font-normal { font-weight: var(--font-weight-normal); }
+.font-medium { font-weight: var(--font-weight-medium); }
+.font-semibold { font-weight: var(--font-weight-semibold); }
+.font-bold { font-weight: var(--font-weight-bold); }
 
-h4, .h4 {
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-medium);
-  line-height: var(--line-height-normal);
-  color: var(--color-text-primary);
-}
+/* === МЕЖСТРОЧНЫЕ ИНТЕРВАЛЫ === */
+.leading-tight { line-height: var(--line-height-tight); }
+.leading-normal { line-height: var(--line-height-normal); }
+.leading-relaxed { line-height: var(--line-height-relaxed); }
 
-h5, .h5 {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-medium);
-  line-height: var(--line-height-normal);
-  color: var(--color-text-primary);
-}
-
-h6, .h6 {
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
-  line-height: var(--line-height-normal);
-  color: var(--color-text-primary);
-}
-
-/* Адаптивные заголовки */
-.heading-responsive {
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-semibold);
-  line-height: var(--line-height-tight);
-  color: var(--color-text-primary);
-}
-
+/* === АДАПТИВНАЯ ТИПОГРАФИКА === */
 @media (min-width: 640px) {
-  .heading-responsive {
-    font-size: var(--font-size-xl);
-  }
+  h1 { font-size: var(--font-size-3xl); }
+  h2 { font-size: var(--font-size-2xl); }
+  h3 { font-size: var(--font-size-xl); }
 }
 
 @media (min-width: 1024px) {
-  .heading-responsive {
-    font-size: var(--font-size-2xl);
-  }
-}
-
-/* Адаптивный текст */
-.text-responsive {
-  font-size: var(--font-size-sm);
-  line-height: var(--line-height-normal);
-}
-
-@media (min-width: 640px) {
-  .text-responsive {
-    font-size: var(--font-size-base);
-  }
+  h1 { font-size: var(--font-size-4xl); }
+  h2 { font-size: var(--font-size-3xl); }
+  h3 { font-size: var(--font-size-2xl); }
 }

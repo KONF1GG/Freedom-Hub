@@ -12,9 +12,11 @@ export default function Header() {
             {employer && <span className="employer-name">{employer}</span>}
           </div>
 
-          <button onClick={logout} className="logout-button">
-            Выйти
-          </button>
+          <div className="d-flex align-items-center gap-3">
+            <button onClick={logout} className="btn btn-danger">
+              Выйти
+            </button>
+          </div>
         </div>
       </div>
     </header>

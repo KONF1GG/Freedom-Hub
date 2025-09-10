@@ -47,83 +47,186 @@ export default function RequireStandalone({ children }: PropsWithChildren) {
   const isAndroidDevice = isAndroid();
 
   return (
-    <div className="pwa-modal">
-      <div className="pwa-modal-content">
-        <div className="pwa-modal-icon">
-          <svg
-            className="w-8 h-8 text-white"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
-            />
-          </svg>
-        </div>
-
-        <h2 className="pwa-modal-title">Установите приложение</h2>
-
-        <p className="pwa-modal-description">
-          Для доступа к приложению установите его на устройство
-        </p>
-
-        <div className="pwa-modal-actions">
-          <button
-            className="btn btn-md btn-primary"
-            onClick={async () => {
-              if (deferredPrompt?.prompt) {
-                deferredPrompt.prompt();
-                try {
-                  const choice = await deferredPrompt.userChoice;
-                  if (choice?.outcome === "accepted") return;
-                } finally {
-                  setDeferredPrompt(null);
-                }
-              } else {
-                setShowHelp(true);
-              }
-            }}
-          >
-            Установить
-          </button>
-        </div>
-
-        <p className="text-xs text-slate-400">
-          После установки откройте приложение и войдите ещё раз
-        </p>
-
-        {showHelp && (
-          <div className="pwa-modal-instructions">
-            <p className="pwa-modal-instructions-title">
-              <strong>Инструкция по установке:</strong>
+    <div className="modal-overlay show">
+      <div className="modal-content">
+        <div className="card-body text-center">
+          <div className="mb-6">
+            <div className="mb-4" style={{ fontSize: "4rem" }}>
+              📱
+            </div>
+            <h2 className="card-title mb-3">Установите приложение</h2>
+            <p className="text-secondary">
+              Для доступа к приложению установите его на устройство
             </p>
-            {isIosDevice ? (
-              <p className="pwa-modal-instructions-text">
-                1. Откройте Safari
-                <br />
-                2. Нажмите кнопку "Поделиться" (квадрат со стрелкой)
-                <br />
-                3. Выберите "На экран «Домой»"
-              </p>
-            ) : isAndroidDevice ? (
-              <p className="pwa-modal-instructions-text">
-                1. Откройте меню браузера (три точки)
-                <br />
-                2. Выберите "Установить приложение"
-                <br />
-                3. Подтвердите установку
-              </p>
-            ) : (
-              <p className="pwa-modal-instructions-text">
-                Откройте меню браузера и выберите "Установить приложение"
-              </p>
-            )}
           </div>
-        )}
+
+          <div className="mb-6">
+            <button
+              className="btn btn-primary btn-lg"
+              onClick={async () => {
+                if (deferredPrompt?.prompt) {
+                  deferredPrompt.prompt();
+                  try {
+                    const choice = await deferredPrompt.userChoice;
+                    if (choice?.outcome === "accepted") return;
+                  } finally {
+                    setDeferredPrompt(null);
+                  }
+                } else {
+                  setShowHelp(true);
+                }
+              }}
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="mr-2"
+              >
+                <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+              </svg>
+              Установить
+            </button>
+          </div>
+
+          <p className="text-muted text-sm mb-4">
+            После установки откройте приложение и войдите ещё раз
+          </p>
+
+          {showHelp && (
+            <div className="text-left">
+              <h3 className="font-semibold text-lg mb-3">
+                Инструкция по установке:
+              </h3>
+              <div className="d-flex flex-column gap-3">
+                {isIosDevice ? (
+                  <>
+                    <div className="d-flex align-items-start gap-3">
+                      <div
+                        className="d-flex align-items-center justify-content-center"
+                        style={{
+                          width: "32px",
+                          height: "32px",
+                          borderRadius: "50%",
+                          backgroundColor: "var(--color-primary)",
+                          color: "white",
+                          fontSize: "14px",
+                          flexShrink: 0,
+                        }}
+                      >
+                        1
+                      </div>
+                      <div className="text-secondary">Откройте Safari</div>
+                    </div>
+                    <div className="d-flex align-items-start gap-3">
+                      <div
+                        className="d-flex align-items-center justify-content-center"
+                        style={{
+                          width: "32px",
+                          height: "32px",
+                          borderRadius: "50%",
+                          backgroundColor: "var(--color-accent)",
+                          color: "white",
+                          fontSize: "14px",
+                          flexShrink: 0,
+                        }}
+                      >
+                        2
+                      </div>
+                      <div className="text-secondary">
+                        Нажмите кнопку "Поделиться" (квадрат со стрелкой)
+                      </div>
+                    </div>
+                    <div className="d-flex align-items-start gap-3">
+                      <div
+                        className="d-flex align-items-center justify-content-center"
+                        style={{
+                          width: "32px",
+                          height: "32px",
+                          borderRadius: "50%",
+                          backgroundColor: "var(--color-teal)",
+                          color: "white",
+                          fontSize: "14px",
+                          flexShrink: 0,
+                        }}
+                      >
+                        3
+                      </div>
+                      <div className="text-secondary">
+                        Выберите "На экран «Домой»"
+                      </div>
+                    </div>
+                  </>
+                ) : isAndroidDevice ? (
+                  <>
+                    <div className="d-flex align-items-start gap-3">
+                      <div
+                        className="d-flex align-items-center justify-content-center"
+                        style={{
+                          width: "32px",
+                          height: "32px",
+                          borderRadius: "50%",
+                          backgroundColor: "var(--color-primary)",
+                          color: "white",
+                          fontSize: "14px",
+                          flexShrink: 0,
+                        }}
+                      >
+                        1
+                      </div>
+                      <div className="text-secondary">
+                        Откройте меню браузера (три точки)
+                      </div>
+                    </div>
+                    <div className="d-flex align-items-start gap-3">
+                      <div
+                        className="d-flex align-items-center justify-content-center"
+                        style={{
+                          width: "32px",
+                          height: "32px",
+                          borderRadius: "50%",
+                          backgroundColor: "var(--color-accent)",
+                          color: "white",
+                          fontSize: "14px",
+                          flexShrink: 0,
+                        }}
+                      >
+                        2
+                      </div>
+                      <div className="text-secondary">
+                        Выберите "Установить приложение"
+                      </div>
+                    </div>
+                    <div className="d-flex align-items-start gap-3">
+                      <div
+                        className="d-flex align-items-center justify-content-center"
+                        style={{
+                          width: "32px",
+                          height: "32px",
+                          borderRadius: "50%",
+                          backgroundColor: "var(--color-teal)",
+                          color: "white",
+                          fontSize: "14px",
+                          flexShrink: 0,
+                        }}
+                      >
+                        3
+                      </div>
+                      <div className="text-secondary">
+                        Подтвердите установку
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <div className="text-secondary">
+                    Откройте меню браузера и выберите "Установить приложение"
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

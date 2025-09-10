@@ -57,26 +57,46 @@ export default function InstallPwaHint() {
   }
 
   return (
-    <div className="pwa-hint">
-      <div className="pwa-hint-content">
-        <div className="pwa-hint-text">
-          Установите приложение для лучшего опыта
+    <div className="card">
+      <div className="card-body text-center">
+        <div className="mb-4">
+          <div className="mb-3" style={{ fontSize: "2.5rem" }}>
+            📱
+          </div>
+          <h3 className="font-semibold text-lg mb-2">Установите приложение</h3>
+          <p className="text-secondary">
+            Для лучшего опыта использования установите Freedom Hub на ваше
+            устройство
+          </p>
         </div>
-        <button className="pwa-hint-button" onClick={handleInstallClick}>
+
+        <button onClick={handleInstallClick} className="btn btn-primary mb-4">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            className="mr-2"
+          >
+            <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+          </svg>
           Установить
         </button>
+
+        {showHelp && (
+          <div className="text-left">
+            <div className="text-sm text-secondary">
+              {isIosDevice ? (
+                <>Откройте меню Safari и выберите «На экран "Домой"»</>
+              ) : isAndroidDevice ? (
+                <>Откройте меню браузера и выберите «Установить приложение»</>
+              ) : (
+                <>Откройте меню браузера и выберите «Установить приложение»</>
+              )}
+            </div>
+          </div>
+        )}
       </div>
-      {showHelp && (
-        <div className="pwa-hint-help">
-          {isIosDevice ? (
-            <>Откройте меню Safari и выберите «На экран "Домой"»</>
-          ) : isAndroidDevice ? (
-            <>Откройте меню браузера и выберите «Установить приложение»</>
-          ) : (
-            <>Откройте меню браузера и выберите «Установить приложение»</>
-          )}
-        </div>
-      )}
     </div>
   );
 }

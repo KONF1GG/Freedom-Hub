@@ -27,18 +27,18 @@ export default function CopyField({
   }
 
   return (
-    <div className={`copy-field ${className}`}>
-      <label className="copy-field-label">{label}</label>
-      <div className="copy-field-container">
+    <div className={`form-group ${className}`}>
+      <label className="form-label">{label}</label>
+      <div className="d-flex gap-2">
         <input
           type="text"
           value={value}
           readOnly
-          className="copy-field-input"
+          className="form-input bg-light"
         />
         <button
           onClick={handleCopy}
-          className={`copy-button ${copied ? "copied" : "default"}`}
+          className={`btn ${copied ? "btn-success" : "btn-primary"}`}
         >
           {copied ? "Скопировано" : "Копировать"}
         </button>
