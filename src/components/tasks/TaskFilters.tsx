@@ -1,4 +1,5 @@
 import type { TaskFilters as TaskFiltersType } from "../../types/request";
+import CustomSelect from "../ui/CustomSelect";
 
 interface TaskFiltersProps {
   filters: TaskFiltersType;
@@ -35,29 +36,47 @@ export default function TaskFilters({
             />
 
             <div className="filters-selects">
-              <select
-                value={filters.status || ""}
-                onChange={(e) =>
-                  onFiltersChange({ ...filters, status: e.target.value })
-                }
-                className="form-input"
-              >
-                <option value="">Все статусы</option>
-                <option value="true">Выполнено</option>
-                <option value="false">Не выполнено</option>
-              </select>
-
-              <select
+              <CustomSelect
                 value={filters.priority || ""}
-                onChange={(e) =>
-                  onFiltersChange({ ...filters, priority: e.target.value })
+                onChange={(value) =>
+                  onFiltersChange({ ...filters, priority: value })
                 }
-                className="form-input"
-              >
-                <option value="">Все приоритеты</option>
-                <option value="true">Высокий</option>
-                <option value="false">Обычный</option>
-              </select>
+                options={[
+                  { value: "", label: "Все" },
+                  { value: "true", label: "Срочная" },
+                  { value: "false", label: "Обычная" },
+                ]}
+                className="filter-select"
+              />
+
+              <CustomSelect
+                value={filters.due_date || ""}
+                onChange={(value) =>
+                  onFiltersChange({
+                    ...filters,
+                    due_date: value as any,
+                  })
+                }
+                options={[
+                  { value: "", label: "Время" },
+                  { value: "current", label: "Текущие" },
+                  { value: "future", label: "Будущие" },
+                ]}
+                className="filter-select"
+              />
+
+              <CustomSelect
+                value={filters.status || ""}
+                onChange={(value) =>
+                  onFiltersChange({ ...filters, status: value })
+                }
+                options={[
+                  { value: "", label: "Статус" },
+                  { value: "false", label: "Открыта" },
+                  { value: "true", label: "Закрыта" },
+                ]}
+                className="filter-select"
+              />
             </div>
           </div>
         </div>

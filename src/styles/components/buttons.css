@@ -40,22 +40,22 @@
 .btn-sm {
   font-size: var(--font-size-sm);
   padding: var(--spacing-2) var(--spacing-4);
-  min-height: 36px;
-  min-width: 36px;
+  min-height: var(--spacing-9);
+  min-width: var(--spacing-9);
 }
 
 .btn-lg {
   font-size: var(--font-size-lg);
   padding: var(--spacing-4) var(--spacing-8);
-  min-height: 52px;
-  min-width: 52px;
+  min-height: var(--spacing-13);
+  min-width: var(--spacing-13);
 }
 
 .btn-xl {
   font-size: var(--font-size-xl);
   padding: var(--spacing-5) var(--spacing-10);
-  min-height: 60px;
-  min-width: 60px;
+  min-height: var(--spacing-15);
+  min-width: var(--spacing-15);
 }
 
 /* === ВАРИАНТЫ КНОПОК === */
@@ -235,18 +235,18 @@
   }
   
   .btn-sm {
-    min-height: 40px;
-    min-width: 40px;
+    min-height: var(--spacing-10);
+    min-width: var(--spacing-10);
   }
   
   .btn-lg {
-    min-height: 48px;
-    min-width: 48px;
+    min-height: var(--spacing-12);
+    min-width: var(--spacing-12);
   }
   
   .btn-xl {
-    min-height: 56px;
-    min-width: 56px;
+    min-height: var(--spacing-14);
+    min-width: var(--spacing-14);
   }
 }
 

@@ -63,7 +63,7 @@ export interface TaskFilters {
   status?: string;
   priority?: string;
   assigned_to?: string;
-  due_date?: "today" | "week" | "month" | "overdue";
+  due_date?: "today" | "week" | "month" | "overdue" | "current" | "future";
   created_by?: string;
   location?: string;
   tags?: string;

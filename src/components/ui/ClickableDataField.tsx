@@ -13,7 +13,10 @@ export default function ClickableDataField({
   const [copied, setCopied] = useState(false);
   const showToast = useUIStore((s) => s.showToast);
 
-  async function handleCopy() {
+  async function handleCopy(event: React.MouseEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+
     try {
       await navigator.clipboard.writeText(value);
       setCopied(true);

@@ -119,6 +119,29 @@ function applyFilters(
     );
   }
 
+  // Фильтр по времени (текущие/будущие)
+  if (filters.due_date && (filters.due_date === "current" || filters.due_date === "future")) {
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    
+    filtered = filtered.filter((task) => {
+      if (!task.begin_date) return true;
+      
+      const taskDate = new Date(task.begin_date);
+      const taskDateOnly = new Date(taskDate.getFullYear(), taskDate.getMonth(), taskDate.getDate());
+      
+      if (filters.due_date === "current") {
+        // Текущие - сегодня и прошедшие
+        return taskDateOnly <= today;
+      } else if (filters.due_date === "future") {
+        // Будущие - завтра и позже
+        return taskDateOnly > today;
+      }
+      
+      return true;
+    });
+  }
+
   console.log("🔍 Применены фильтры:", filters, "Результат:", filtered.length);
   return filtered;
 }
