@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Header from "../../components/layout/Header";
 import RequestsList from "./RequestsList";
-import TaskFilters from "../../components/tasks/TaskFilters";
 import type { TaskFilters as TaskFiltersType } from "../../types/request";
 import { useRequestsStore } from "../../stores/requestsStore";
 
@@ -22,16 +21,13 @@ export default function HomePage() {
             <h1>Заявки</h1>
           </div>
           <div className="content-layout">
-            <div className="filters-section">
-              <TaskFilters
+            <div className="requests-section">
+              <RequestsList
                 filters={filters}
                 onFiltersChange={setFilters}
                 totalCount={allRequests.length}
                 filteredCount={filteredRequests.length}
               />
-            </div>
-            <div className="requests-section">
-              <RequestsList filters={filters} />
             </div>
           </div>
         </div>

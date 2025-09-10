@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useRequestsStore } from "../../stores/requestsStore";
-import type { TaskFilters } from "../../types/request";
+import type { TaskFilters as TaskFiltersType } from "../../types/request";
 import MapPreview from "../../components/ui/MapPreview";
 import ClickableDataField from "../../components/ui/ClickableDataField";
+import TaskFilters from "../../components/tasks/TaskFilters";
 
 function formatRange(start?: string, end?: string) {
   if (!start) return "";
@@ -35,10 +36,18 @@ function formatRange(start?: string, end?: string) {
 }
 
 interface RequestsListProps {
-  filters: TaskFilters;
+  filters: TaskFiltersType;
+  onFiltersChange: (filters: TaskFiltersType) => void;
+  totalCount: number;
+  filteredCount: number;
 }
 
-export default function RequestsList({ filters }: RequestsListProps) {
+export default function RequestsList({
+  filters,
+  onFiltersChange,
+  totalCount,
+  filteredCount,
+}: RequestsListProps) {
   const {
     filteredRequests,
     allRequests,
@@ -69,6 +78,14 @@ export default function RequestsList({ filters }: RequestsListProps) {
 
   return (
     <div className="requests-scroll-container">
+      <div className="filters-section">
+        <TaskFilters
+          filters={filters}
+          onFiltersChange={onFiltersChange}
+          totalCount={totalCount}
+          filteredCount={filteredCount}
+        />
+      </div>
       <div className="requests-list">
         {isLoading && (
           <div className="card loading-state">
