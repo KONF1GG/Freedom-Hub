@@ -1,14 +1,12 @@
 interface MapPreviewProps {
   lat: number;
   lng: number;
-  address?: string;
   className?: string;
 }
 
 export default function MapPreview({
   lat,
   lng,
-  address,
   className = "",
 }: MapPreviewProps) {
   // Проверяем, что координаты валидны

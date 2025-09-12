@@ -31,15 +31,23 @@ export default function RequestDetailsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950">
+    <div className="app-layout">
       <Header />
-      <main className="container-responsive py-6">
-        <div className="space-y-6">
-          <div className="flex items-center gap-4">
-            <BackButton />
-            <h1 className="heading-responsive text-white">Заявка №{task.id}</h1>
+      <main className="main-content">
+        <div className="page-container">
+          <div className="page-header">
+            <div className="flex items-center gap-4">
+              <BackButton />
+              <h1>Заявка №{task.id}</h1>
+            </div>
           </div>
-          <TaskDetails task={task} />
+          <div className="content-layout">
+            <div className="task-details-section">
+              <div className="task-details-scroll-container">
+                <TaskDetails task={task} />
+              </div>
+            </div>
+          </div>
         </div>
       </main>
     </div>

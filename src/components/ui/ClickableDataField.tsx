@@ -20,10 +20,10 @@ export default function ClickableDataField({
     try {
       await navigator.clipboard.writeText(value);
       setCopied(true);
-      showToast("Скопировано в буфер обмена", "success");
+      showToast("Скопировано в буфер обмена");
       setTimeout(() => setCopied(false), 2000);
     } catch (error) {
-      showToast("Ошибка копирования", "error");
+      showToast("Ошибка копирования");
     }
   }
 

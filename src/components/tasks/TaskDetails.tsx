@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import ClickableDataField from "../ui/ClickableDataField";
 import TaskPhotos from "./TaskPhotos";
 import TaskHistory from "./TaskHistory";
@@ -10,6 +10,7 @@ interface TaskDetailsProps {
 
 export default function TaskDetails({ task }: TaskDetailsProps) {
   const [activeTab, setActiveTab] = useState("details");
+  const tabsCardRef = useRef<HTMLDivElement>(null);
 
   const tabs = [
     { id: "details", label: "Детали", icon: "📋" },
@@ -19,8 +20,23 @@ export default function TaskDetails({ task }: TaskDetailsProps) {
     { id: "history", label: "История", icon: "📜" },
   ];
 
+  const handleTabChange = (tabId: string) => {
+    setActiveTab(tabId);
+
+    // Прокручиваем к карточке с вкладками плавно
+    requestAnimationFrame(() => {
+      if (tabsCardRef.current) {
+        tabsCardRef.current.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+          inline: "nearest",
+        });
+      }
+    });
+  };
+
   return (
-    <div className="d-flex flex-column gap-6">
+    <div className="d-flex flex-column gap-4">
       {/* Заголовок */}
       <div className="card">
         <div className="card-header">
@@ -122,13 +138,13 @@ export default function TaskDetails({ task }: TaskDetailsProps) {
       </div>
 
       {/* Табы */}
-      <div className="card">
+      <div className="card" ref={tabsCardRef}>
         <div className="card-header">
           <nav className="tabs-nav">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
+                onClick={() => handleTabChange(tab.id)}
                 className={`tab-button ${
                   activeTab === tab.id
                     ? "tab-button-active"
@@ -143,59 +159,61 @@ export default function TaskDetails({ task }: TaskDetailsProps) {
         </div>
 
         <div className="card-body">
-          {activeTab === "details" && (
-            <div className="d-flex flex-column gap-4">
-              <div className="d-flex flex-column gap-3">
-                <div className="form-group">
-                  <label className="form-label">Дата начала</label>
-                  <div className="form-input bg-light">
-                    {task.begin_date
-                      ? new Date(task.begin_date).toLocaleDateString("ru-RU")
-                      : "-"}
+          <div className="tab-content">
+            {activeTab === "details" && (
+              <div className="d-flex flex-column gap-4">
+                <div className="d-flex flex-column gap-3">
+                  <div className="form-group">
+                    <label className="form-label">Дата начала</label>
+                    <div className="form-input bg-light">
+                      {task.begin_date
+                        ? new Date(task.begin_date).toLocaleDateString("ru-RU")
+                        : "-"}
+                    </div>
                   </div>
-                </div>
-                <div className="form-group">
-                  <label className="form-label">Дата окончания</label>
-                  <div className="form-input bg-light">
-                    {task.due_date
-                      ? new Date(task.due_date).toLocaleDateString("ru-RU")
-                      : "-"}
+                  <div className="form-group">
+                    <label className="form-label">Дата окончания</label>
+                    <div className="form-input bg-light">
+                      {task.due_date
+                        ? new Date(task.due_date).toLocaleDateString("ru-RU")
+                        : "-"}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          )}
+            )}
 
-          {activeTab === "photos" && (
-            <TaskPhotos
-              photos={task.photos || []}
-              onPhotoUpload={async (file) => {
-                // Здесь будет логика загрузки фото
-                console.log("Загрузка фото:", file);
-              }}
-            />
-          )}
+            {activeTab === "photos" && (
+              <TaskPhotos
+                photos={task.photos || []}
+                onPhotoUpload={async (file) => {
+                  // Здесь будет логика загрузки фото
+                  console.log("Загрузка фото:", file);
+                }}
+              />
+            )}
 
-          {activeTab === "comments" && (
-            <div className="text-center text-secondary py-6">
-              Функция комментариев в разработке
-            </div>
-          )}
+            {activeTab === "comments" && (
+              <div className="text-center text-secondary py-6">
+                Функция комментариев в разработке
+              </div>
+            )}
 
-          {activeTab === "coords" && (
-            <TaskCoordsEditor
-              lat={task.coordinates?.lat}
-              lng={task.coordinates?.lng}
-              onSave={async (lat, lng) => {
-                // Здесь будет логика сохранения координат
-                console.log("Сохранение координат:", { lat, lng });
-              }}
-            />
-          )}
+            {activeTab === "coords" && (
+              <TaskCoordsEditor
+                lat={task.coordinates?.lat}
+                lng={task.coordinates?.lng}
+                onSave={async (lat, lng) => {
+                  // Здесь будет логика сохранения координат
+                  console.log("Сохранение координат:", { lat, lng });
+                }}
+              />
+            )}
 
-          {activeTab === "history" && (
-            <TaskHistory history={task.history || []} />
-          )}
+            {activeTab === "history" && (
+              <TaskHistory history={task.history || []} />
+            )}
+          </div>
         </div>
       </div>
     </div>

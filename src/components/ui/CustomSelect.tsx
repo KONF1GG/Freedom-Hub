@@ -126,7 +126,6 @@ export default function CustomSelect({
     if (selectRef.current) {
       const rect = selectRef.current.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
-      const viewportWidth = window.innerWidth;
 
       // Проверяем, есть ли место снизу
       const spaceBelow = viewportHeight - rect.bottom;
